@@ -108,17 +108,10 @@
   }
 
   .actor-container {
-    display: grid;
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
     gap: 20px;
     padding: 16px;
-  }
-
-  @media (min-width: 560px) {
-    .actor-container {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-    }
   }
 
   .actor-card {
@@ -474,24 +467,91 @@
 </div>
 
 <script>
-  // ---------- УТВЕРЖДЕННЫЕ (пример, заполните вашими данными) ----------
-  const approved = [
-    // Здесь будут утверждённые актёры с контактами
-  ];
+  // ---------- УТВЕРЖДЕННЫЕ (пока пусто) ----------
+  const approved = [];
 
-  // ---------- ПРОСМОТРЕННЫЕ (пример, заполните вашими данными) ----------
-  const viewed = [
-    // Здесь будут просмотренные актёры с видео
-  ];
+  // ---------- ПРОСМОТРЕННЫЕ (пока пусто) ----------
+  const viewed = [];
 
-  // ---------- РОЛИ (все персонажи из вашего списка) ----------
+  // ---------- РОЛИ ----------
   const data = {
-    "Врач 12.05": [],
+    "Врач 12.05": [
+      {
+        name: "Павел Нагай",
+        img: "photos/Нагай.jpg",
+        size: "178/50/42",
+        video: "https://disk.yandex.ru/i/jR21wHBoSNXYLA"
+      },
+      {
+        name: "Никита Шеф",
+        img: "photos/Шеф.jpg",
+        img2: "photos/Шеф1.jpg",
+        size: "180/48/42",
+        video: "https://disk.yandex.ru/i/EKKeMwHhobshGA"
+      },
+      {
+        name: "Денис Дудник",
+        img: "photos/Дудник.jpg",
+        size: "178/48/40",
+        video: "https://disk.yandex.ru/d/IqvbuOl85Y_7vw"
+      },
+      {
+        name: "Владислав Пулин",
+        img: "photos/Пулин.jpg",
+        size: "194/52-54/45",
+        video: "https://disk.yandex.ru/i/VU23G64dGMqxsA"
+      },
+      {
+        name: "Павел Волгин",
+        img: "photos/Волгин.jpg",
+        img2: "photos/Волгин1.jpg",
+        size: "183/50/43",
+        video: "https://disk.yandex.ru/i/ljS-1ouGvJ489Q"
+      },
+      {
+        name: "Петр Лебедев",
+        img: "photos/Лебедев.jpg",
+        img2: "photos/Лебедев1.jpg",
+        size: "170/48/40",
+        video: "https://disk.yandex.ru/i/-09uhEqibgumCQ"
+      },
+      {
+        name: "Алексей Далекий",
+        img: "photos/Далекий.jpg",
+        img2: "photos/Далекий1.jpg",
+        size: "180/48/43",
+        video: "https://disk.yandex.ru/i/4CBagZl4QSWg0g"
+      }
+    ],
     "Конвойный 15.05": [],
     "Парень 17.05": [],
     "Пожилая женщина 17.05": [],
     "Курьер 19.05": [],
-    "Оперативник 27.05": [],
+    "Оперативник 27.05": [
+      {
+        name: "Дмитрий Комлев",
+        img: "photos/Комлев.jpg",
+        age: "35",
+        size: "183/52/44",
+        education: "Академия кино и телевидения, мастерская Строева А.М.",
+        video: "https://disk.yandex.ru/i/X1u7NJmZY1grkg"
+      },
+      {
+        name: "Артем Кувшинов",
+        img: "photos/Redibyjd.jpg",
+        age: "29",
+        size: "175/48/42",
+        education: "БИЭПП, 2018, мастерская Д.Г. Юргенс, мастер Агеева Р. О.",
+        video: "https://disk.yandex.ru/i/t21qTp9zfAc7TQ"
+      },
+      {
+        name: "Петр Лебедев",
+        img: "photos/Лебедев.jpg",
+        age: "32",
+        size: "170/48/40",
+        video: "https://disk.yandex.ru/i/aeHqlZjkSEX8jA"
+      }
+    ],
     "Охранник СК 31.05": [],
     "Мастер 02.06": [],
     "Внук Серафимы 02.06": [],
@@ -515,6 +575,7 @@
     let metaHtml = '';
     if (actor.age) metaHtml += `<span>📅 ${actor.age}</span>`;
     if (actor.size) metaHtml += `<span>📏 ${actor.size}</span>`;
+    if (actor.education) metaHtml += `<span>🎓 ${actor.education}</span>`;
     return metaHtml ? `<div class="meta">${metaHtml}</div>` : '';
   }
 
