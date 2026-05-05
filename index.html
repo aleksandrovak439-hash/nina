@@ -523,7 +523,56 @@
         video: "https://disk.yandex.ru/i/4CBagZl4QSWg0g"
       }
     ],
-    "Конвойный 15.05": [],
+    "Конвойный 15.05": [
+      {
+        name: "Олег Меркулов",
+        img: "photos/Меркулов.jpg",
+        img2: "photos/Меркулов1.jpg",
+        age: "35",
+        size: "187/54-56/44-45",
+        video: "https://disk.yandex.ru/i/r2ArgggX61ijpw"
+      },
+      {
+        name: "Виталий Софонов",
+        img: "photos/Софонов.jpg",
+        img2: "photos/Софонов1.jpg",
+        age: "32",
+        size: "183/50-52/43",
+        education: "Киностудия «ЛЕНДОК», Мастерская Македония Киселева",
+        video: "https://disk.yandex.ru/d/aX4WbpLU_hZi5g"
+      },
+      {
+        name: "Максим Шляхтин",
+        img: "photos/Шляхтин.jpg",
+        img2: "photos/Шляхтин1.jpg",
+        age: "28",
+        size: "180/50/44",
+        education: "студент 3 курс актер музыкального театра",
+        video: "https://disk.yandex.ru/i/3OND46Ap6Hyddg"
+      },
+      {
+        name: "Игорь Папылев",
+        img: "photos/Папылев.jpg",
+        age: "47",
+        size: "185/52/45",
+        education: "Закончил СПБГУКИ",
+        video: "https://disk.yandex.ru/i/yFmBHzP0M391MQ"
+      },
+      {
+        name: "Александр Воронин",
+        img: "photos/Воронин.jpg",
+        img2: "photos/Воронин1.jpg",
+        size: "179/52-54/43",
+        video: "https://disk.yandex.ru/i/mOCbf0K_boFKXQ"
+      },
+      {
+        name: "Артем Артемьев",
+        img: "photos/Артем.jpg",
+        size: "180/52/42",
+        note: "готов бриться",
+        video: "https://disk.yandex.ru/i/Txzu8cNZwgT_Pw"
+      }
+    ],
     "Парень 17.05": [],
     "Пожилая женщина 17.05": [],
     "Курьер 19.05": [],
@@ -576,6 +625,7 @@
     if (actor.age) metaHtml += `<span>📅 ${actor.age}</span>`;
     if (actor.size) metaHtml += `<span>📏 ${actor.size}</span>`;
     if (actor.education) metaHtml += `<span>🎓 ${actor.education}</span>`;
+    if (actor.note) metaHtml += `<span>📌 ${actor.note}</span>`;
     return metaHtml ? `<div class="meta">${metaHtml}</div>` : '';
   }
 
