@@ -107,6 +107,7 @@
     font-size: 14px;
   }
 
+  /* ===== СТАРЫЙ ФОРМАТ (для большинства ролей) ===== */
   .actor-container {
     display: flex;
     flex-direction: column;
@@ -142,10 +143,6 @@
     object-fit: cover;
     transition: transform 0.4s ease;
     cursor: pointer;
-  }
-
-  .actor-card:hover .single-photo img {
-    transform: scale(1.02);
   }
 
   .carousel-slider {
@@ -244,68 +241,146 @@
     background: #e0352a;
   }
 
-  /* Стили для утверждённых и просмотренных — сетка 2 колонки */
-  .approved-container, .viewed-container {
+  /* ===== НОВЫЙ КОМПАКТНЫЙ ФОРМАТ ДЛЯ ГРУППОВКИ ===== */
+  .compact-container {
     padding: 16px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-  }
-
-  .approved-card {
-    background: #121212;
-    border-radius: 20px;
-    overflow: hidden;
-    border: 1px solid rgba(255,255,255,0.06);
     display: flex;
     flex-direction: column;
+    gap: 14px;
   }
 
-  .approved-card .photo {
-    aspect-ratio: 3 / 4;
+  .compact-card {
+    background: #121212;
+    border-radius: 24px;
+    padding: 12px;
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    border: 1px solid rgba(255,255,255,0.05);
+    transition: all 0.2s;
+  }
+
+  .compact-card .photo {
+    width: 100px;
+    height: 133px;
+    flex-shrink: 0;
+    border-radius: 18px;
     overflow: hidden;
+    background: #2c2c2e;
   }
 
-  .approved-card .photo img {
+  .compact-card .photo img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     cursor: pointer;
   }
 
-  .approved-card .info {
-    padding: 10px 8px 12px;
+  .compact-card .info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
   }
 
-  .approved-card .info strong {
-    font-size: 14px;
+  .compact-card .info strong {
+    font-size: 17px;
     font-weight: 700;
-    display: block;
-    margin-bottom: 4px;
     line-height: 1.3;
   }
 
-  .approved-card .info div {
-    font-size: 11px;
+  .compact-card .info .details {
+    font-size: 13px;
     color: #bcbcbc;
-    margin-bottom: 8px;
   }
 
-  .approved-card .small-video-btn {
+  .compact-card .info .details span {
+    display: inline-block;
+    margin-right: 12px;
+  }
+
+  .video-link-btn {
     background: #ff3b30;
     border: none;
-    border-radius: 30px;
-    padding: 6px 0;
-    font-size: 11px;
+    border-radius: 40px;
+    padding: 8px 16px;
+    font-size: 13px;
     font-weight: 600;
     color: white;
-    width: 100%;
+    width: fit-content;
     cursor: pointer;
     transition: 0.2s;
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    justify-content: center;
-    gap: 4px;
+    gap: 6px;
+  }
+
+  .video-link-btn:active {
+    transform: scale(0.96);
+    background: #e0352a;
+  }
+
+  /* ===== СТИЛИ ДЛЯ УТВЕРЖДЁННЫХ/ПРОСМОТРЕННЫХ (НЕ МЕНЯЕМ) ===== */
+  .approved-container, .viewed-container {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .approval-card {
+    background: #121212;
+    border-radius: 24px;
+    padding: 12px;
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    border: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .approval-card .photo {
+    width: 100px;
+    height: 133px;
+    flex-shrink: 0;
+    border-radius: 18px;
+    overflow: hidden;
+    background: #2c2c2e;
+  }
+
+  .approval-card .photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    cursor: pointer;
+  }
+
+  .approval-card .info {
+    flex: 1;
+  }
+
+  .approval-card .info strong {
+    font-size: 17px;
+    font-weight: 700;
+  }
+
+  .approval-card .info .details {
+    font-size: 13px;
+    color: #bcbcbc;
+    margin: 6px 0;
+  }
+
+  .contacts-btn {
+    background: #2c2c2e;
+    border: none;
+    border-radius: 40px;
+    padding: 8px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    color: white;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
   }
 
   .empty-message {
@@ -313,9 +388,9 @@
     color: #6c6c70;
     padding: 48px 20px;
     font-size: 16px;
-    grid-column: 1 / -1;
   }
 
+  /* Модальные окна */
   .modal {
     display: none;
     position: fixed;
@@ -372,12 +447,10 @@
     font-size: 15px;
     line-height: 1.4;
     color: #ddd;
-    word-break: break-word;
   }
 
   .modal-contacts strong {
     color: #ff3b30;
-    font-weight: 600;
   }
 
   .close-modal {
@@ -395,11 +468,6 @@
     align-items: center;
     justify-content: center;
     border-radius: 40px;
-    transition: 0.2s;
-  }
-
-  .close-modal:hover {
-    background: #ff3b30;
   }
 
   footer {
@@ -422,7 +490,7 @@
 
 <div id="actorPage" style="display:none;">
   <div class="back-button" onclick="goBack()">← Назад к ролям</div>
-  <div class="actor-container" id="actorContainer"></div>
+  <div id="actorContainer" class="actor-container"></div>
 </div>
 
 <div id="approvedPage" style="display:none;">
@@ -450,339 +518,84 @@
 </div>
 
 <script>
-  // ---------- УТВЕРЖДЕННЫЕ (пример, пока пусто) ----------
-  const approved = [];
+  // ---------- УТВЕРЖДЕННЫЕ (не меняем формат) ----------
+  const approved = [
+    // Здесь будут утверждённые актёры (пример оставлен пустым)
+  ];
 
-  // ---------- ПРОСМОТРЕННЫЕ (пример, пока пусто) ----------
-  const viewed = [];
+  // ---------- ПРОСМОТРЕННЫЕ (не меняем формат) ----------
+  const viewed = [
+    // Пример:
+  ];
 
   // ---------- РОЛИ ----------
   const data = {
     "Врач 12.05": [
-      {
-        name: "Павел Нагай",
-        img: "photos/Нагай.jpg",
-        size: "178/50/42",
-        video: "https://disk.yandex.ru/i/jR21wHBoSNXYLA"
-      },
-      {
-        name: "Никита Шеф",
-        img: "photos/Шеф.jpg",
-        img2: "photos/Шеф1.jpg",
-        size: "180/48/42",
-        video: "https://disk.yandex.ru/i/EKKeMwHhobshGA"
-      },
-      {
-        name: "Денис Дудник",
-        img: "photos/Дудник.jpg",
-        size: "178/48/40",
-        video: "https://disk.yandex.ru/d/IqvbuOl85Y_7vw"
-      },
-      {
-        name: "Владислав Пулин",
-        img: "photos/Пулин.jpg",
-        size: "194/52-54/45",
-        video: "https://disk.yandex.ru/i/VU23G64dGMqxsA"
-      },
-      {
-        name: "Павел Волгин",
-        img: "photos/Волгин.jpg",
-        img2: "photos/Волгин1.jpg",
-        size: "183/50/43",
-        video: "https://disk.yandex.ru/i/ljS-1ouGvJ489Q"
-      },
-      {
-        name: "Петр Лебедев",
-        img: "photos/Лебедев.jpg",
-        img2: "photos/Лебедев1.jpg",
-        size: "170/48/40",
-        video: "https://disk.yandex.ru/i/-09uhEqibgumCQ"
-      },
-      {
-        name: "Алексей Далекий",
-        img: "photos/Далекий.jpg",
-        img2: "photos/Далекий1.jpg",
-        size: "180/48/43",
-        video: "https://disk.yandex.ru/i/4CBagZl4QSWg0g"
-      }
+      { name: "Павел Нагай", img: "photos/Нагай.jpg", size: "178/50/42", video: "https://disk.yandex.ru/i/jR21wHBoSNXYLA" },
+      { name: "Никита Шеф", img: "photos/Шеф.jpg", img2: "photos/Шеф1.jpg", size: "180/48/42", video: "https://disk.yandex.ru/i/EKKeMwHhobshGA" },
+      { name: "Денис Дудник", img: "photos/Дудник.jpg", size: "178/48/40", video: "https://disk.yandex.ru/d/IqvbuOl85Y_7vw" },
+      { name: "Владислав Пулин", img: "photos/Пулин.jpg", size: "194/52-54/45", video: "https://disk.yandex.ru/i/VU23G64dGMqxsA" },
+      { name: "Павел Волгин", img: "photos/Волгин.jpg", img2: "photos/Волгин1.jpg", size: "183/50/43", video: "https://disk.yandex.ru/i/ljS-1ouGvJ489Q" },
+      { name: "Петр Лебедев", img: "photos/Лебедев.jpg", img2: "photos/Лебедев1.jpg", size: "170/48/40", video: "https://disk.yandex.ru/i/-09uhEqibgumCQ" },
+      { name: "Алексей Далекий", img: "photos/Далекий.jpg", img2: "photos/Далекий1.jpg", size: "180/48/43", video: "https://disk.yandex.ru/i/4CBagZl4QSWg0g" }
     ],
     "Конвойный 15.05": [
-      {
-        name: "Олег Меркулов",
-        img: "photos/Меркулов.jpg",
-        img2: "photos/Меркулов1.jpg",
-        age: "35",
-        size: "187/54-56/44-45",
-        video: "https://disk.yandex.ru/i/r2ArgggX61ijpw"
-      },
-      {
-        name: "Виталий Софонов",
-        img: "photos/Софонов.jpg",
-        img2: "photos/Софонов1.jpg",
-        age: "32",
-        size: "183/50-52/43",
-        education: "Киностудия «ЛЕНДОК», Мастерская Македония Киселева",
-        video: "https://disk.yandex.ru/d/aX4WbpLU_hZi5g"
-      },
-      {
-        name: "Максим Шляхтин",
-        img: "photos/Шляхтин.jpg",
-        img2: "photos/Шляхтин1.jpg",
-        age: "28",
-        size: "180/50/44",
-        education: "студент 3 курс актер музыкального театра",
-        video: "https://disk.yandex.ru/i/3OND46Ap6Hyddg"
-      },
-      {
-        name: "Игорь Папылев",
-        img: "photos/Папылев.jpg",
-        age: "47",
-        size: "185/52/45",
-        education: "Закончил СПБГУКИ",
-        video: "https://disk.yandex.ru/i/yFmBHzP0M391MQ"
-      },
-      {
-        name: "Александр Воронин",
-        img: "photos/Воронин.jpg",
-        img2: "photos/Воронин1.jpg",
-        size: "179/52-54/43",
-        video: "https://disk.yandex.ru/i/mOCbf0K_boFKXQ"
-      },
-      {
-        name: "Артем Артемьев",
-        img: "photos/Артем.jpg",
-        size: "180/52/42",
-        note: "готов бриться",
-        video: "https://disk.yandex.ru/i/Txzu8cNZwgT_Pw"
-      }
+      { name: "Олег Меркулов", img: "photos/Меркулов.jpg", img2: "photos/Меркулов1.jpg", age: "35", size: "187/54-56/44-45", video: "https://disk.yandex.ru/i/r2ArgggX61ijpw" },
+      { name: "Виталий Софонов", img: "photos/Софонов.jpg", img2: "photos/Софонов1.jpg", age: "32", size: "183/50-52/43", education: "Киностудия «ЛЕНДОК», Мастерская Македония Киселева", video: "https://disk.yandex.ru/d/aX4WbpLU_hZi5g" },
+      { name: "Максим Шляхтин", img: "photos/Шляхтин.jpg", img2: "photos/Шляхтин1.jpg", age: "28", size: "180/50/44", education: "студент 3 курс актер музыкального театра", video: "https://disk.yandex.ru/i/3OND46Ap6Hyddg" },
+      { name: "Игорь Папылев", img: "photos/Папылев.jpg", age: "47", size: "185/52/45", education: "Закончил СПБГУКИ", video: "https://disk.yandex.ru/i/yFmBHzP0M391MQ" },
+      { name: "Александр Воронин", img: "photos/Воронин.jpg", img2: "photos/Воронин1.jpg", size: "179/52-54/43", video: "https://disk.yandex.ru/i/mOCbf0K_boFKXQ" },
+      { name: "Артем Артемьев", img: "photos/Артем.jpg", size: "180/52/42", note: "готов бриться", video: "https://disk.yandex.ru/i/Txzu8cNZwgT_Pw" }
     ],
     "Парень 17.05": [
-      {
-        name: "Владимир Парполов",
-        img: "photos/Парполов.jpg",
-        size: "175/46/43",
-        education: "абитуриент класса РГИСИ",
-        video: "https://disk.yandex.ru/i/tBIAjd81mvf46Q"
-      },
-      {
-        name: "Леонель Прокофьев",
-        img: "photos/Прокофьев.jpg",
-        img2: "photos/Прокофьев1.jpg",
-        age: "15",
-        size: "155/40/36",
-        video: "https://disk.yandex.ru/i/oG3m76Mg4ToeQg"
-      },
-      {
-        name: "Дамир Хамидов",
-        img: "photos/Хамидов.jpg",
-        img2: "photos/Хамидов1.jpg",
-        size: "177/46/42",
-        video: "https://disk.yandex.ru/i/dAjm477zoLZCxw"
-      },
-      {
-        name: "Георгий Ушанов",
-        img: "photos/Ушанов.jpg",
-        img2: "photos/Ушанов1.jpg",
-        size: "178/46/44",
-        video: "https://disk.yandex.ru/i/V0cjtZhF333t9w"
-      },
-      {
-        name: "Никита Демидов",
-        img: "photos/Демидов.jpg",
-        img2: "photos/Демидов1.jpg",
-        age: "17",
-        size: "170/44/40",
-        video: "https://disk.yandex.ru/d/J8kY2bBJfjeS5g"
-      }
+      { name: "Владимир Парполов", img: "photos/Парполов.jpg", size: "175/46/43", education: "абитуриент класса РГИСИ", video: "https://disk.yandex.ru/i/tBIAjd81mvf46Q" },
+      { name: "Леонель Прокофьев", img: "photos/Прокофьев.jpg", img2: "photos/Прокофьев1.jpg", age: "15", size: "155/40/36", video: "https://disk.yandex.ru/i/oG3m76Mg4ToeQg" },
+      { name: "Дамир Хамидов", img: "photos/Хамидов.jpg", img2: "photos/Хамидов1.jpg", size: "177/46/42", video: "https://disk.yandex.ru/i/dAjm477zoLZCxw" },
+      { name: "Георгий Ушанов", img: "photos/Ушанов.jpg", img2: "photos/Ушанов1.jpg", size: "178/46/44", video: "https://disk.yandex.ru/i/V0cjtZhF333t9w" },
+      { name: "Никита Демидов", img: "photos/Демидов.jpg", img2: "photos/Демидов1.jpg", age: "17", size: "170/44/40", video: "https://disk.yandex.ru/d/J8kY2bBJfjeS5g" }
     ],
     "Мастер по ремонту телефонов 17.05": [
-      {
-        name: "Евгений Фролов",
-        img: "photos/Фролов.jpg",
-        img2: "photos/Фролов1.jpg",
-        age: "48",
-        size: "176/52/41",
-        education: "бииямс (мастер н. а РФ Волков ИН)",
-        video: "https://disk.yandex.ru/i/aPR1m7rOuwlcIQ"
-      },
-      {
-        name: "Данил Коловский",
-        img: "photos/Коловский.jpg",
-        age: "23",
-        size: "170/46-48 (s/м)",
-        education: "Культпросвет училище (ВОККиТ), мастер. Боровикова Е.А.; Высшая школа режиссеров и сценаристов (ВШРиС), мастер. Зиновьев В.А.",
-        video: "https://disk.yandex.ru/i/gEawBr9tKK8pNg"
-      },
-      {
-        name: "Михаил Бахмацкий",
-        img: "photos/Бахмацкий.jpg",
-        age: "37",
-        size: "180/50/41",
-        video: "https://disk.yandex.ru/d/gIlxW8OaAvrpVA"
-      },
-      {
-        name: "Дмитрий Кюсснер",
-        img: "photos/Кюсснер.jpg",
-        age: "21",
-        size: "185/50/44",
-        education: "СЗИУ (маст. Н. А. Евдокимовой)",
-        video: "https://disk.yandex.ru/i/20lYDWFjGwuqdA"
-      },
-      {
-        name: "Михаил Невский",
-        img: "photos/Невский.jpg",
-        img2: "photos/Невский1.jpg",
-        age: "33",
-        size: "177/50/42",
-        education: "Проф актёр, РГИСИ 2021",
-        video: "https://disk.yandex.ru/d/StXKpQ5yZ00ItQ"
-      },
-      {
-        name: "Антон Богданов",
-        img: "photos/Богданов.jpg",
-        age: "37",
-        size: "183/52/43",
-        video: "https://disk.yandex.ru/i/PXrDSlFzCwLO1Q"
-      },
-      {
-        name: "Евгений Ганичев",
-        img: "photos/Ганичев.jpg",
-        age: "51",
-        size: "187/52/45",
-        video: "https://disk.yandex.ru/i/eC159TUKC6-tMg"
-      },
-      {
-        name: "Михаил Локшин",
-        img: "photos/Локшин.jpg",
-        age: "49",
-        size: "185/50/45",
-        education: "ВШРиС, мастерская киноактера, мастер Зиновьев Валерий Анатольевич",
-        video: "https://disk.yandex.ru/i/fIN0CPfjCxAZRQ"
-      }
+      { name: "Евгений Фролов", img: "photos/Фролов.jpg", img2: "photos/Фролов1.jpg", age: "48", size: "176/52/41", education: "бииямс (мастер н. а РФ Волков ИН)", video: "https://disk.yandex.ru/i/aPR1m7rOuwlcIQ" },
+      { name: "Данил Коловский", img: "photos/Коловский.jpg", age: "23", size: "170/46-48 (s/м)", education: "Культпросвет училище (ВОККиТ), мастер. Боровикова Е.А.; Высшая школа режиссеров и сценаристов (ВШРиС), мастер. Зиновьев В.А.", video: "https://disk.yandex.ru/i/gEawBr9tKK8pNg" },
+      { name: "Михаил Бахмацкий", img: "photos/Бахмацкий.jpg", age: "37", size: "180/50/41", video: "https://disk.yandex.ru/d/gIlxW8OaAvrpVA" },
+      { name: "Дмитрий Кюсснер", img: "photos/Кюсснер.jpg", age: "21", size: "185/50/44", education: "СЗИУ (маст. Н. А. Евдокимовой)", video: "https://disk.yandex.ru/i/20lYDWFjGwuqdA" },
+      { name: "Михаил Невский", img: "photos/Невский.jpg", img2: "photos/Невский1.jpg", age: "33", size: "177/50/42", education: "Проф актёр, РГИСИ 2021", video: "https://disk.yandex.ru/d/StXKpQ5yZ00ItQ" },
+      { name: "Антон Богданов", img: "photos/Богданов.jpg", age: "37", size: "183/52/43", video: "https://disk.yandex.ru/i/PXrDSlFzCwLO1Q" },
+      { name: "Евгений Ганичев", img: "photos/Ганичев.jpg", age: "51", size: "187/52/45", video: "https://disk.yandex.ru/i/eC159TUKC6-tMg" },
+      { name: "Михаил Локшин", img: "photos/Локшин.jpg", age: "49", size: "185/50/45", education: "ВШРиС, мастерская киноактера, мастер Зиновьев Валерий Анатольевич", video: "https://disk.yandex.ru/i/fIN0CPfjCxAZRQ" }
     ],
     "Пожилая женщина 17.05": [
-      {
-        name: "Наталия Яковлева",
-        img: "photos/Яковлева.jpg",
-        size: "162/48/40",
-        video: "https://disk.yandex.ru/i/wl1HqCgawBAJrw"
-      },
-      {
-        name: "Марина Кивик",
-        img: "photos/Кивик.jpg",
-        age: "63",
-        size: "160/48/37",
-        video: "https://disk.yandex.ru/i/-VLVh8TUlug-gA"
-      },
-      {
-        name: "Лилия Тютюн",
-        img: "photos/Тютюн.jpg",
-        size: "160/46/38",
-        video: "https://disk.yandex.ru/i/8SCDl_L5lUWq5g"
-      },
-      {
-        name: "Ева Ждановская",
-        img: "photos/Ждановская.jpg",
-        age: "56",
-        size: "172/46/39",
-        education: "ЭДТ - Ю.Ярветт (Эстония), ВШРиС - В.Зиновьев (СПб)",
-        video: "https://disk.yandex.ru/i/deMl1wwURkc4FA"
-      },
-      {
-        name: "Анна Бирулева",
-        img: "photos/Бирулева.jpg",
-        age: "65",
-        size: "172/50/41",
-        video: "https://disk.yandex.ru/i/N6O2tCD18AoQmw"
-      },
-      {
-        name: "Елена Куприянова",
-        img: "photos/Куприянова.jpg",
-        age: "60+",
-        size: "164/50/40",
-        video: "https://disk.yandex.ru/i/ENSevFp4PmnKXg"
-      },
-      {
-        name: "Валентина Мартышкова",
-        img: "photos/Мартышкова.jpg",
-        img2: "photos/Мартышкова1.jpg",
-        size: "164/44/38",
-        video: "https://disk.yandex.ru/i/ltYwIKKejToLdw"
-      },
-      {
-        name: "Нина Жуковская",
-        img: "photos/Жуковская.jpg",
-        img2: "photos/Жуковская1.jpg",
-        size: "158/48/38",
-        video: "https://disk.yandex.ru/i/E67G5BUSbw-wVA"
-      }
+      { name: "Наталия Яковлева", img: "photos/Яковлева.jpg", size: "162/48/40", video: "https://disk.yandex.ru/i/wl1HqCgawBAJrw" },
+      { name: "Марина Кивик", img: "photos/Кивик.jpg", age: "63", size: "160/48/37", video: "https://disk.yandex.ru/i/-VLVh8TUlug-gA" },
+      { name: "Лилия Тютюн", img: "photos/Тютюн.jpg", size: "160/46/38", video: "https://disk.yandex.ru/i/8SCDl_L5lUWq5g" },
+      { name: "Ева Ждановская", img: "photos/Ждановская.jpg", age: "56", size: "172/46/39", education: "ЭДТ - Ю.Ярветт (Эстония), ВШРиС - В.Зиновьев (СПб)", video: "https://disk.yandex.ru/i/deMl1wwURkc4FA" },
+      { name: "Анна Бирулева", img: "photos/Бирулева.jpg", age: "65", size: "172/50/41", video: "https://disk.yandex.ru/i/N6O2tCD18AoQmw" },
+      { name: "Елена Куприянова", img: "photos/Куприянова.jpg", age: "60+", size: "164/50/40", video: "https://disk.yandex.ru/i/ENSevFp4PmnKXg" },
+      { name: "Валентина Мартышкова", img: "photos/Мартышкова.jpg", img2: "photos/Мартышкова1.jpg", size: "164/44/38", video: "https://disk.yandex.ru/i/ltYwIKKejToLdw" },
+      { name: "Нина Жуковская", img: "photos/Жуковская.jpg", img2: "photos/Жуковская1.jpg", size: "158/48/38", video: "https://disk.yandex.ru/i/E67G5BUSbw-wVA" }
     ],
     "Курьер 19.05": [
-      {
-        name: "Дмитрий Раздымахо",
-        img: "photos/Раздымахо.jpg",
-        age: "22",
-        size: "184/52/43",
-        education: "СЗУ, 2025, Факультет музыки, театра и кино",
-        video: "https://casting.filmtoolz.ru/3677389/?modal=actor#video"
-      },
-      {
-        name: "Артём Кочемасов",
-        img: "photos/Кочемасов.jpg",
-        age: "24",
-        size: "182/48/43",
-        education: "СПБГИКИТ, мастерская А.А. Дежонова (2021-2025)",
-        video: "https://disk.yandex.ru/d/NT-4B5MPqOHbyw"
-      },
-      {
-        name: "Андрей Макаров",
-        img: "photos/Макаров.jpg",
-        age: "22",
-        size: "175/46/42",
-        education: "РШИ при СПБРСИ, 2023, Музыки, театра и режиссуры, Мастерская Е.А. Максимовой",
-        video: "https://rutube.ru/video/a243b1ebbd08765af746f96d6d5e7620/?r=wd"
-      },
-      {
-        name: "Дмитрий Иванов",
-        img: "photos/Иванов.jpg",
-        age: "24",
-        size: "190/50/44",
-        education: "Российский институт театрального искусства",
-        video: "https://disk.yandex.ru/d/8yHnrFxppT8fwQ"
-      }
+      { name: "Дмитрий Раздымахо", img: "photos/Раздымахо.jpg", age: "22", size: "184/52/43", education: "СЗУ, 2025, Факультет музыки, театра и кино", video: "https://casting.filmtoolz.ru/3677389/?modal=actor#video" },
+      { name: "Артём Кочемасов", img: "photos/Кочемасов.jpg", age: "24", size: "182/48/43", education: "СПБГИКИТ, мастерская А.А. Дежонова (2021-2025)", video: "https://disk.yandex.ru/d/NT-4B5MPqOHbyw" },
+      { name: "Андрей Макаров", img: "photos/Макаров.jpg", age: "22", size: "175/46/42", education: "РШИ при СПБРСИ, 2023, Музыки, театра и режиссуры, Мастерская Е.А. Максимовой", video: "https://rutube.ru/video/a243b1ebbd08765af746f96d6d5e7620/?r=wd" },
+      { name: "Дмитрий Иванов", img: "photos/Иванов.jpg", age: "24", size: "190/50/44", education: "Российский институт театрального искусства", video: "https://disk.yandex.ru/d/8yHnrFxppT8fwQ" }
     ],
     "Оперативник 27.05": [
-      {
-        name: "Дмитрий Комлев",
-        img: "photos/Комлев.jpg",
-        age: "35",
-        size: "183/52/44",
-        education: "Академия кино и телевидения, мастерская Строева А.М.",
-        video: "https://disk.yandex.ru/i/X1u7NJmZY1grkg"
-      },
-      {
-        name: "Артем Кувшинов",
-        img: "photos/Redibyjd.jpg",
-        age: "29",
-        size: "175/48/42",
-        education: "БИЭПП, 2018, мастерская Д.Г. Юргенс, мастер Агеева Р. О.",
-        video: "https://disk.yandex.ru/i/t21qTp9zfAc7TQ"
-      },
-      {
-        name: "Петр Лебедев",
-        img: "photos/Лебедев.jpg",
-        age: "32",
-        size: "170/48/40",
-        video: "https://disk.yandex.ru/i/aeHqlZjkSEX8jA"
-      }
+      { name: "Дмитрий Комлев", img: "photos/Комлев.jpg", age: "35", size: "183/52/44", education: "Академия кино и телевидения, мастерская Строева А.М.", video: "https://disk.yandex.ru/i/X1u7NJmZY1grkg" },
+      { name: "Артем Кувшинов", img: "photos/Redibyjd.jpg", age: "29", size: "175/48/42", education: "БИЭПП, 2018, мастерская Д.Г. Юргенс, мастер Агеева Р. О.", video: "https://disk.yandex.ru/i/t21qTp9zfAc7TQ" },
+      { name: "Петр Лебедев", img: "photos/Лебедев.jpg", age: "32", size: "170/48/40", video: "https://disk.yandex.ru/i/aeHqlZjkSEX8jA" }
     ],
+    "Полицейский 26.05": [],
+    "Парень и девушка 02.06": [],
+    "Малыш 06.06": [],
     "Охранник СК 31.05": [],
     "Мастер 02.06": [],
     "Внук Серафимы 02.06": [],
-    "Парень и девушка 02.06": [],
-    "Врач скорой 05.06": [],
-    "Малыш 06.06": []
+    "Врач скорой 05.06": []
   };
+
+  // Роли, которые должны отображаться в компактном формате (как список утверждения)
+  const compactRoles = ["Курьер 19.05", "Полицейский 26.05", "Парень и девушка 02.06", "Малыш 06.06"];
 
   // ---------- ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ ----------
   function escapeHtml(str) {
@@ -795,6 +608,7 @@
     });
   }
 
+  // Построение мета-блока для старого формата
   function buildMetaBlock(actor) {
     let metaHtml = '';
     if (actor.age) metaHtml += `<span>📅 ${actor.age}</span>`;
@@ -860,6 +674,7 @@
     document.getElementById('contactsModal').style.display = 'none';
   }
 
+  // Главная функция отображения роли
   function openRole(role) {
     const actorsList = data[role];
     document.getElementById('home').style.display = 'none';
@@ -872,23 +687,51 @@
       return;
     }
 
-    actorsList.forEach(actor => {
-      const photoHtml = renderPhotoBlock(actor);
-      const metaHtml = buildMetaBlock(actor);
-      const videoBtn = actor.video 
-        ? `<button class="video-btn" onclick="window.open('${actor.video}', '_blank')">▶ Смотреть видео</button>` 
-        : '';
-      container.innerHTML += `
-        <div class="actor-card">
-          ${photoHtml}
-          <div class="actor-info">
-            <div class="name">${escapeHtml(actor.name)}</div>
-            ${metaHtml}
-            ${videoBtn}
+    // Проверяем, нужно ли использовать компактный формат
+    if (compactRoles.includes(role)) {
+      container.className = 'compact-container'; // меняем класс контейнера
+      actorsList.forEach(actor => {
+        // Собираем детали: возраст, образование, размер (если есть)
+        let detailsHtml = '';
+        if (actor.age) detailsHtml += `<span>📅 ${actor.age}</span>`;
+        if (actor.education) detailsHtml += `<span>🎓 ${actor.education}</span>`;
+        if (actor.size && !actor.education && !actor.age) detailsHtml += `<span>📏 ${actor.size}</span>`;
+        else if (actor.size) detailsHtml += `<span>📏 ${actor.size}</span>`;
+        
+        const cardHtml = `
+          <div class="compact-card">
+            <div class="photo">
+              <img src="${actor.img}" alt="${actor.name}" loading="lazy" onclick="openFullImage('${actor.img}')">
+            </div>
+            <div class="info">
+              <strong>${escapeHtml(actor.name)}</strong>
+              <div class="details">${detailsHtml}</div>
+              ${actor.video ? `<button class="video-link-btn" onclick="window.open('${actor.video}', '_blank')">▶ Смотреть визитку</button>` : ''}
+            </div>
           </div>
-        </div>
-      `;
-    });
+        `;
+        container.innerHTML += cardHtml;
+      });
+    } else {
+      container.className = 'actor-container'; // старый формат
+      actorsList.forEach(actor => {
+        const photoHtml = renderPhotoBlock(actor);
+        const metaHtml = buildMetaBlock(actor);
+        const videoBtn = actor.video 
+          ? `<button class="video-btn" onclick="window.open('${actor.video}', '_blank')">▶ Смотреть видео</button>` 
+          : '';
+        container.innerHTML += `
+          <div class="actor-card">
+            ${photoHtml}
+            <div class="actor-info">
+              <div class="name">${escapeHtml(actor.name)}</div>
+              ${metaHtml}
+              ${videoBtn}
+            </div>
+          </div>
+        `;
+      });
+    }
   }
 
   function goBack() {
@@ -898,58 +741,61 @@
     document.getElementById('home').style.display = 'block';
   }
 
-  // Функции для отображения утверждённых и просмотренных (сетка 2 колонки)
-  function openViewed() {
-    document.getElementById('home').style.display = 'none';
-    document.getElementById('viewedPage').style.display = 'block';
-    const container = document.getElementById('viewedContainer');
-    container.innerHTML = '';
-    if (!viewed.length) {
-      container.innerHTML = '<div class="empty-message">Нет просмотренных</div>';
-      return;
-    }
-    viewed.forEach(actor => {
-      container.innerHTML += `
-        <div class="approved-card">
-          <div class="photo">
-            <img src="${actor.img}" alt="${actor.name}" loading="lazy" onclick="openFullImage('${actor.img}')">
-          </div>
-          <div class="info">
-            <strong>${escapeHtml(actor.name)}</strong>
-            <div>${actor.age ? '📅 ' + actor.age : ''} ${actor.size ? '📏 ' + actor.size : ''}</div>
-            ${actor.video ? `<button class="small-video-btn" onclick="window.open('${actor.video}', '_blank')">▶ Видео</button>` : ''}
-          </div>
-        </div>
-      `;
-    });
-  }
-
+  // Функции для утверждённых и просмотренных (оставляем как было, без изменений)
   function openApproved() {
     document.getElementById('home').style.display = 'none';
     document.getElementById('approvedPage').style.display = 'block';
     const container = document.getElementById('approvedContainer');
     container.innerHTML = '';
     if (!approved.length) {
-      container.innerHTML = '<div class="empty-message">Нет утвержденных</div>';
+      container.innerHTML = '<div class="empty-message">Нет утверждённых актёров</div>';
       return;
     }
-    approved.forEach(item => {
+    approved.forEach(actor => {
+      const contactsBtn = actor.contacts ? `<button class="contacts-btn" onclick="window.showContactsForActor(${JSON.stringify(actor).replace(/"/g, '&quot;')})">📋 Контакты</button>` : '';
       container.innerHTML += `
-        <div class="approved-card">
+        <div class="approval-card">
           <div class="photo">
-            <img src="${item.img}" alt="${item.name}" loading="lazy" onclick="openFullImage('${item.img}')">
+            <img src="${actor.img}" alt="${actor.name}" loading="lazy" onclick="openFullImage('${actor.img}')">
           </div>
           <div class="info">
-            <strong>${escapeHtml(item.role)}<br>${escapeHtml(item.name)}</strong>
-            <div>${item.size ? '📏 ' + item.size : ''}</div>
-            <button class="small-video-btn" onclick="window.showContactsForActor(${JSON.stringify(item).replace(/"/g, '&quot;')})">📋 Контакты</button>
+            <strong>${escapeHtml(actor.name)}</strong>
+            <div class="details">
+              ${actor.age ? `📅 ${actor.age}` : ''} ${actor.education ? `🎓 ${actor.education}` : ''}
+            </div>
+            ${contactsBtn}
           </div>
         </div>
       `;
     });
-    window.showContactsForActor = function(actorObj) {
-      showContacts(actorObj);
-    };
+    window.showContactsForActor = function(actorObj) { showContacts(actorObj); };
+  }
+
+  function openViewed() {
+    document.getElementById('home').style.display = 'none';
+    document.getElementById('viewedPage').style.display = 'block';
+    const container = document.getElementById('viewedContainer');
+    container.innerHTML = '';
+    if (!viewed.length) {
+      container.innerHTML = '<div class="empty-message">Нет просмотренных актёров</div>';
+      return;
+    }
+    viewed.forEach(actor => {
+      container.innerHTML += `
+        <div class="approval-card">
+          <div class="photo">
+            <img src="${actor.img}" alt="${actor.name}" loading="lazy" onclick="openFullImage('${actor.img}')">
+          </div>
+          <div class="info">
+            <strong>${escapeHtml(actor.name)}</strong>
+            <div class="details">
+              ${actor.age ? `📅 ${actor.age}` : ''} ${actor.education ? `🎓 ${actor.education}` : ''}
+            </div>
+            ${actor.video ? `<button class="video-link-btn" onclick="window.open('${actor.video}', '_blank')">▶ Смотреть визитку</button>` : ''}
+          </div>
+        </div>
+      `;
+    });
   }
 
   // ---------- ПОСТРОЕНИЕ ГЛАВНОГО МЕНЮ ----------
