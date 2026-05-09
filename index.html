@@ -107,19 +107,45 @@
     font-size: 14px;
   }
 
-  /* ===== СТАРЫЙ ФОРМАТ (для большинства ролей) ===== */
-  .actor-container {
+  /* Кнопка текста сцены */
+  .script-button {
+    background: #2c2c2e;
+    border: none;
+    border-radius: 40px;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    color: white;
+    cursor: pointer;
+    transition: 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin: 8px 16px 0 16px;
+    width: fit-content;
+  }
+
+  .script-button:active {
+    transform: scale(0.96);
+    background: #3a3a3c;
+  }
+
+  /* Стили для страницы с актёрами (общие контейнеры) */
+  .actor-container, .compact-container {
+    padding: 16px;
     display: flex;
     flex-direction: column;
     gap: 20px;
-    padding: 16px;
+  }
+
+  .compact-container {
+    gap: 14px;
   }
 
   .actor-card {
     background: #121212;
     border-radius: 28px;
     overflow: hidden;
-    transition: all 0.25s ease;
     border: 1px solid rgba(255,255,255,0.06);
     box-shadow: 0 8px 20px rgba(0,0,0,0.4);
     display: flex;
@@ -129,7 +155,6 @@
   .photo-block {
     width: 100%;
     background: #1e1e1e;
-    position: relative;
   }
 
   .single-photo {
@@ -141,7 +166,6 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.4s ease;
     cursor: pointer;
   }
 
@@ -151,7 +175,6 @@
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
-    gap: 0;
     background: #0a0a0a;
   }
 
@@ -178,7 +201,6 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    display: block;
     cursor: pointer;
   }
 
@@ -195,7 +217,6 @@
     font-weight: 700;
     letter-spacing: -0.3px;
     color: white;
-    line-height: 1.3;
   }
 
   .meta {
@@ -204,7 +225,6 @@
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
-    align-items: center;
   }
 
   .meta span {
@@ -228,25 +248,10 @@
     color: white;
     width: 100%;
     cursor: pointer;
-    transition: all 0.2s ease;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
-    box-shadow: 0 2px 8px rgba(255,59,48,0.3);
-  }
-
-  .video-btn:active {
-    transform: scale(0.96);
-    background: #e0352a;
-  }
-
-  /* ===== НОВЫЙ КОМПАКТНЫЙ ФОРМАТ ДЛЯ ГРУППОВКИ ===== */
-  .compact-container {
-    padding: 16px;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
   }
 
   .compact-card {
@@ -257,7 +262,6 @@
     gap: 16px;
     align-items: center;
     border: 1px solid rgba(255,255,255,0.05);
-    transition: all 0.2s;
   }
 
   .compact-card .photo {
@@ -286,7 +290,6 @@
   .compact-card .info strong {
     font-size: 17px;
     font-weight: 700;
-    line-height: 1.3;
   }
 
   .compact-card .info .details {
@@ -309,18 +312,12 @@
     color: white;
     width: fit-content;
     cursor: pointer;
-    transition: 0.2s;
     display: inline-flex;
     align-items: center;
     gap: 6px;
   }
 
-  .video-link-btn:active {
-    transform: scale(0.96);
-    background: #e0352a;
-  }
-
-  /* ===== СТИЛИ ДЛЯ УТВЕРЖДЁННЫХ/ПРОСМОТРЕННЫХ (НЕ МЕНЯЕМ) ===== */
+  /* Стили для УТВЕРЖДЕННЫХ и ПРОСМОТРЕННЫХ (оставляем как есть) */
   .approved-container, .viewed-container {
     padding: 16px;
     display: flex;
@@ -344,7 +341,6 @@
     flex-shrink: 0;
     border-radius: 18px;
     overflow: hidden;
-    background: #2c2c2e;
   }
 
   .approval-card .photo img {
@@ -390,7 +386,6 @@
     font-size: 16px;
   }
 
-  /* Модальные окна */
   .modal {
     display: none;
     position: fixed;
@@ -436,23 +431,6 @@
     text-align: left;
   }
 
-  .modal-contacts h3 {
-    font-size: 22px;
-    margin-bottom: 16px;
-    font-weight: 700;
-  }
-
-  .modal-contacts p {
-    margin: 12px 0;
-    font-size: 15px;
-    line-height: 1.4;
-    color: #ddd;
-  }
-
-  .modal-contacts strong {
-    color: #ff3b30;
-  }
-
   .close-modal {
     position: absolute;
     top: 16px;
@@ -490,7 +468,7 @@
 
 <div id="actorPage" style="display:none;">
   <div class="back-button" onclick="goBack()">← Назад к ролям</div>
-  <div id="actorContainer" class="actor-container"></div>
+  <div id="actorContainer"></div>
 </div>
 
 <div id="approvedPage" style="display:none;">
@@ -518,17 +496,21 @@
 </div>
 
 <script>
-  // ---------- УТВЕРЖДЕННЫЕ (не меняем формат) ----------
-  const approved = [
-    // Здесь будут утверждённые актёры (пример оставлен пустым)
-  ];
+  // ---------- ССЫЛКИ НА СЦЕНЫ ДЛЯ РОЛЕЙ ----------
+  const roleScripts = {
+    "Охранник СК 31.05": "https://disk.yandex.ru/i/ph0QzX8C_YOJQA",
+    "Гардеробщик 01.06": "https://disk.yandex.ru/i/2PuS2vjZJCygvg",
+    "Полицейский 26.05": "https://disk.yandex.ru/i/bRUpjP-Yt67cZg"
+    // Добавьте другие роли при необходимости: "Врач 12.05": "ссылка", и т.д.
+  };
 
-  // ---------- ПРОСМОТРЕННЫЕ (не меняем формат) ----------
-  const viewed = [
-    // Пример:
-  ];
+  // ---------- УТВЕРЖДЕННЫЕ (пока пусто) ----------
+  const approved = [];
 
-  // ---------- РОЛИ ----------
+  // ---------- ПРОСМОТРЕННЫЕ (пока пусто) ----------
+  const viewed = [];
+
+  // ---------- РОЛИ (все актёры) ----------
   const data = {
     "Врач 12.05": [
       { name: "Павел Нагай", img: "photos/Нагай.jpg", size: "178/50/42", video: "https://disk.yandex.ru/i/jR21wHBoSNXYLA" },
@@ -604,8 +586,8 @@
     "Врач скорой 05.06": []
   };
 
-  // Роли, которые должны отображаться в компактном формате (как список утверждения)
-  const compactRoles = ["Курьер 19.05", "Полицейский 26.05", "Гардеробщик 01.06", "Парень и девушка 02.06", "Малыш 06.06"];
+  // Роли, которые должны отображаться в компактном формате
+  const compactRoles = ["Курьер 19.05", "Полицейский 26.05", "Гардеробщик 01.06", "Парень и девушка 02.06", "Малыш 06.06", "Охранник СК 31.05"];
 
   // ---------- ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ ----------
   function escapeHtml(str) {
@@ -618,7 +600,6 @@
     });
   }
 
-  // Построение мета-блока для старого формата
   function buildMetaBlock(actor) {
     let metaHtml = '';
     if (actor.age) metaHtml += `<span>📅 ${actor.age}</span>`;
@@ -684,7 +665,13 @@
     document.getElementById('contactsModal').style.display = 'none';
   }
 
-  // Главная функция отображения роли
+  function openScript(role) {
+    const url = roleScripts[role];
+    if (url) {
+      window.open(url, '_blank');
+    }
+  }
+
   function openRole(role) {
     const actorsList = data[role];
     document.getElementById('home').style.display = 'none';
@@ -692,22 +679,33 @@
     const container = document.getElementById('actorContainer');
     container.innerHTML = '';
 
+    // Добавляем кнопку текста сцены, если есть
+    if (roleScripts[role]) {
+      const scriptBtn = document.createElement('button');
+      scriptBtn.className = 'script-button';
+      scriptBtn.innerHTML = '📄 Текст сцены';
+      scriptBtn.onclick = () => openScript(role);
+      container.appendChild(scriptBtn);
+    }
+
     if (!actorsList || actorsList.length === 0) {
-      container.innerHTML = '<div class="empty-message">✨ Пока нет проб на эту роль</div>';
+      container.innerHTML += '<div class="empty-message">✨ Пока нет проб на эту роль</div>';
       return;
     }
 
-    // Проверяем, нужно ли использовать компактный формат
-    if (compactRoles.includes(role)) {
-      container.className = 'compact-container';
-      actorsList.forEach(actor => {
-        // Собираем детали: возраст, образование, размер
+    const isCompact = compactRoles.includes(role);
+    const wrapperClass = isCompact ? 'compact-container' : 'actor-container';
+    const actorsWrapper = document.createElement('div');
+    actorsWrapper.className = wrapperClass;
+    container.appendChild(actorsWrapper);
+
+    actorsList.forEach(actor => {
+      if (isCompact) {
         let detailsHtml = '';
         if (actor.age) detailsHtml += `<span>📅 ${actor.age}</span>`;
         if (actor.education) detailsHtml += `<span>🎓 ${actor.education}</span>`;
         if (actor.size && !actor.education && !actor.age) detailsHtml += `<span>📏 ${actor.size}</span>`;
         else if (actor.size) detailsHtml += `<span>📏 ${actor.size}</span>`;
-        
         const cardHtml = `
           <div class="compact-card">
             <div class="photo">
@@ -720,17 +718,14 @@
             </div>
           </div>
         `;
-        container.innerHTML += cardHtml;
-      });
-    } else {
-      container.className = 'actor-container';
-      actorsList.forEach(actor => {
+        actorsWrapper.innerHTML += cardHtml;
+      } else {
         const photoHtml = renderPhotoBlock(actor);
         const metaHtml = buildMetaBlock(actor);
         const videoBtn = actor.video 
           ? `<button class="video-btn" onclick="window.open('${actor.video}', '_blank')">▶ Смотреть видео</button>` 
           : '';
-        container.innerHTML += `
+        const cardHtml = `
           <div class="actor-card">
             ${photoHtml}
             <div class="actor-info">
@@ -740,8 +735,9 @@
             </div>
           </div>
         `;
-      });
-    }
+        actorsWrapper.innerHTML += cardHtml;
+      }
+    });
   }
 
   function goBack() {
@@ -751,7 +747,7 @@
     document.getElementById('home').style.display = 'block';
   }
 
-  // Функции для утверждённых и просмотренных (оставляем как было)
+  // Функции для утверждённых и просмотренных (оставлены без изменений)
   function openApproved() {
     document.getElementById('home').style.display = 'none';
     document.getElementById('approvedPage').style.display = 'block';
@@ -765,14 +761,10 @@
       const contactsBtn = actor.contacts ? `<button class="contacts-btn" onclick="window.showContactsForActor(${JSON.stringify(actor).replace(/"/g, '&quot;')})">📋 Контакты</button>` : '';
       container.innerHTML += `
         <div class="approval-card">
-          <div class="photo">
-            <img src="${actor.img}" alt="${actor.name}" loading="lazy" onclick="openFullImage('${actor.img}')">
-          </div>
+          <div class="photo"><img src="${actor.img}" alt="${actor.name}" onclick="openFullImage('${actor.img}')"></div>
           <div class="info">
             <strong>${escapeHtml(actor.name)}</strong>
-            <div class="details">
-              ${actor.age ? `📅 ${actor.age}` : ''} ${actor.education ? `🎓 ${actor.education}` : ''}
-            </div>
+            <div class="details">${actor.age ? `📅 ${actor.age}` : ''} ${actor.education ? `🎓 ${actor.education}` : ''}</div>
             ${contactsBtn}
           </div>
         </div>
@@ -793,14 +785,10 @@
     viewed.forEach(actor => {
       container.innerHTML += `
         <div class="approval-card">
-          <div class="photo">
-            <img src="${actor.img}" alt="${actor.name}" loading="lazy" onclick="openFullImage('${actor.img}')">
-          </div>
+          <div class="photo"><img src="${actor.img}" alt="${actor.name}" onclick="openFullImage('${actor.img}')"></div>
           <div class="info">
             <strong>${escapeHtml(actor.name)}</strong>
-            <div class="details">
-              ${actor.age ? `📅 ${actor.age}` : ''} ${actor.education ? `🎓 ${actor.education}` : ''}
-            </div>
+            <div class="details">${actor.age ? `📅 ${actor.age}` : ''} ${actor.education ? `🎓 ${actor.education}` : ''}</div>
             ${actor.video ? `<button class="video-link-btn" onclick="window.open('${actor.video}', '_blank')">▶ Смотреть визитку</button>` : ''}
           </div>
         </div>
@@ -808,7 +796,7 @@
     });
   }
 
-  // ---------- ПОСТРОЕНИЕ ГЛАВНОГО МЕНЮ ----------
+  // Построение главного меню
   const roleListDiv = document.getElementById('roleList');
   roleListDiv.innerHTML = '';
 
