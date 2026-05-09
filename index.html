@@ -585,7 +585,17 @@
       { name: "Артем Кувшинов", img: "photos/Redibyjd.jpg", age: "29", size: "175/48/42", education: "БИЭПП, 2018, мастерская Д.Г. Юргенс, мастер Агеева Р. О.", video: "https://disk.yandex.ru/i/t21qTp9zfAc7TQ" },
       { name: "Петр Лебедев", img: "photos/Лебедев.jpg", age: "32", size: "170/48/40", video: "https://disk.yandex.ru/i/aeHqlZjkSEX8jA" }
     ],
-    "Полицейский 26.05": [],
+    "Полицейский 26.05": [
+      { name: "Денис Алексеев", img: "photos/Алексеев.jpg", age: "38", size: "180/52/45", video: "https://disk.yandex.ru/i/_9_joXs--PTzkA" },
+      { name: "Артём Котельников", img: "photos/Котельников.jpg", age: "23", size: "182 XL (пиджак) / 43-44", video: null }
+    ],
+    "Гардеробщик 01.06": [
+      { name: "Виктор Ефремов", img: "photos/Ефремов.jpg", size: "175/48/42", video: "https://disk.yandex.ru/i/MU5ADX3H8a1cPQ" },
+      { name: "Юрий Носиков", img: "photos/Носиков.jpg", size: "175/50/43", video: "https://disk.yandex.ru/i/AMBnu41S-tTkbA" },
+      { name: "Валерий Кукуста", img: "photos/Кукуста.jpg", size: "180/52/43", video: "https://disk.yandex.ru/i/M57rpRuZDaXnSA" },
+      { name: "Сергей Кучеров", img: "photos/Кучеров.jpg", age: "52", size: "185/54-56/43", video: "https://disk.yandex.ru/i/wd3tnkaHnjkONg" },
+      { name: "Валерий Вышинский", img: "photos/Вышинский.jpg", age: "56", size: "177/54/42", video: "https://disk.yandex.ru/i/jvyt7ZUVyVCHbQ" }
+    ],
     "Парень и девушка 02.06": [],
     "Малыш 06.06": [],
     "Охранник СК 31.05": [],
@@ -595,7 +605,7 @@
   };
 
   // Роли, которые должны отображаться в компактном формате (как список утверждения)
-  const compactRoles = ["Курьер 19.05", "Полицейский 26.05", "Парень и девушка 02.06", "Малыш 06.06"];
+  const compactRoles = ["Курьер 19.05", "Полицейский 26.05", "Гардеробщик 01.06", "Парень и девушка 02.06", "Малыш 06.06"];
 
   // ---------- ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ ----------
   function escapeHtml(str) {
@@ -689,9 +699,9 @@
 
     // Проверяем, нужно ли использовать компактный формат
     if (compactRoles.includes(role)) {
-      container.className = 'compact-container'; // меняем класс контейнера
+      container.className = 'compact-container';
       actorsList.forEach(actor => {
-        // Собираем детали: возраст, образование, размер (если есть)
+        // Собираем детали: возраст, образование, размер
         let detailsHtml = '';
         if (actor.age) detailsHtml += `<span>📅 ${actor.age}</span>`;
         if (actor.education) detailsHtml += `<span>🎓 ${actor.education}</span>`;
@@ -713,7 +723,7 @@
         container.innerHTML += cardHtml;
       });
     } else {
-      container.className = 'actor-container'; // старый формат
+      container.className = 'actor-container';
       actorsList.forEach(actor => {
         const photoHtml = renderPhotoBlock(actor);
         const metaHtml = buildMetaBlock(actor);
@@ -741,7 +751,7 @@
     document.getElementById('home').style.display = 'block';
   }
 
-  // Функции для утверждённых и просмотренных (оставляем как было, без изменений)
+  // Функции для утверждённых и просмотренных (оставляем как было)
   function openApproved() {
     document.getElementById('home').style.display = 'none';
     document.getElementById('approvedPage').style.display = 'block';
