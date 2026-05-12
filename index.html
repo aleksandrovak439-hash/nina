@@ -11,14 +11,12 @@
     box-sizing: border-box;
     -webkit-tap-highlight-color: transparent;
   }
-
   body {
     background: #050505;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, sans-serif;
     color: #f2f2f2;
     padding: 0 0 24px 0;
   }
-
   .app-header {
     padding: 20px 16px 8px 16px;
     border-bottom: 1px solid rgba(255,255,255,0.05);
@@ -29,7 +27,6 @@
     top: 0;
     z-index: 10;
   }
-
   .app-header h1 {
     font-size: 26px;
     font-weight: 700;
@@ -41,7 +38,6 @@
     margin: 0;
     text-align: left;
   }
-
   .back-button {
     display: inline-flex;
     align-items: center;
@@ -59,18 +55,15 @@
     width: fit-content;
     margin: 12px 16px 0 16px;
   }
-
   .back-button:active {
     transform: scale(0.97);
   }
-
   .role-list {
     padding: 8px 16px;
     display: flex;
     flex-direction: column;
     gap: 12px;
   }
-
   .role-card {
     background: #121212;
     border-radius: 24px;
@@ -80,12 +73,10 @@
     border: 1px solid rgba(255,255,255,0.05);
     box-shadow: 0 4px 12px rgba(0,0,0,0.3);
   }
-
   .role-card:active {
     transform: scale(0.98);
     background: #1c1c1e;
   }
-
   .role-card strong {
     font-size: 18px;
     font-weight: 600;
@@ -93,7 +84,6 @@
     display: block;
     margin-bottom: 8px;
   }
-
   .role-count {
     font-size: 13px;
     color: #9e9e9e;
@@ -101,13 +91,10 @@
     align-items: center;
     gap: 6px;
   }
-
   .role-count::before {
     content: "🎬";
     font-size: 14px;
   }
-
-  /* Кнопка текста сцены */
   .script-button {
     background: #2c2c2e;
     border: none;
@@ -124,136 +111,16 @@
     margin: 8px 16px 0 16px;
     width: fit-content;
   }
-
   .script-button:active {
     transform: scale(0.96);
     background: #3a3a3c;
   }
-
-  /* Стили для страницы с актёрами (общие контейнеры) */
-  .actor-container, .compact-container {
+  .compact-container {
     padding: 16px;
     display: flex;
     flex-direction: column;
-    gap: 20px;
-  }
-
-  .compact-container {
     gap: 14px;
   }
-
-  .actor-card {
-    background: #121212;
-    border-radius: 28px;
-    overflow: hidden;
-    border: 1px solid rgba(255,255,255,0.06);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-    display: flex;
-    flex-direction: column;
-  }
-
-  .photo-block {
-    width: 100%;
-    background: #1e1e1e;
-  }
-
-  .single-photo {
-    aspect-ratio: 3 / 5;
-    overflow: hidden;
-  }
-
-  .single-photo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    cursor: pointer;
-  }
-
-  .carousel-slider {
-    display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
-    background: #0a0a0a;
-  }
-
-  .carousel-slider::-webkit-scrollbar {
-    height: 4px;
-  }
-  .carousel-slider::-webkit-scrollbar-track {
-    background: #2a2a2a;
-    border-radius: 10px;
-  }
-  .carousel-slider::-webkit-scrollbar-thumb {
-    background: #ff3b30;
-    border-radius: 10px;
-  }
-
-  .slide {
-    flex: 0 0 100%;
-    scroll-snap-align: start;
-    aspect-ratio: 3 / 5;
-    background: #1a1a1a;
-  }
-
-  .slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    cursor: pointer;
-  }
-
-  .actor-info {
-    padding: 14px 12px 16px 12px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    background: #121212;
-  }
-
-  .name {
-    font-size: 17px;
-    font-weight: 700;
-    letter-spacing: -0.3px;
-    color: white;
-  }
-
-  .meta {
-    font-size: 13px;
-    color: #aaa;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-
-  .meta span {
-    background: rgba(255,255,255,0.07);
-    padding: 4px 10px;
-    border-radius: 30px;
-    font-size: 12px;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-  }
-
-  .video-btn {
-    margin-top: 8px;
-    background: #ff3b30;
-    border: none;
-    border-radius: 60px;
-    padding: 12px 0;
-    font-weight: 600;
-    font-size: 15px;
-    color: white;
-    width: 100%;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-  }
-
   .compact-card {
     background: #121212;
     border-radius: 24px;
@@ -263,7 +130,6 @@
     align-items: center;
     border: 1px solid rgba(255,255,255,0.05);
   }
-
   .compact-card .photo {
     width: 100px;
     height: 133px;
@@ -272,36 +138,30 @@
     overflow: hidden;
     background: #2c2c2e;
   }
-
   .compact-card .photo img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     cursor: pointer;
   }
-
   .compact-card .info {
     flex: 1;
     display: flex;
     flex-direction: column;
     gap: 6px;
   }
-
   .compact-card .info strong {
     font-size: 17px;
     font-weight: 700;
   }
-
   .compact-card .info .details {
     font-size: 13px;
     color: #bcbcbc;
   }
-
   .compact-card .info .details span {
     display: inline-block;
     margin-right: 12px;
   }
-
   .video-link-btn {
     background: #ff3b30;
     border: none;
@@ -316,15 +176,12 @@
     align-items: center;
     gap: 6px;
   }
-
-  /* Стили для УТВЕРЖДЕННЫХ и ПРОСМОТРЕННЫХ (оставляем как есть) */
   .approved-container, .viewed-container {
     padding: 16px;
     display: flex;
     flex-direction: column;
     gap: 14px;
   }
-
   .approval-card {
     background: #121212;
     border-radius: 24px;
@@ -334,7 +191,6 @@
     align-items: center;
     border: 1px solid rgba(255,255,255,0.05);
   }
-
   .approval-card .photo {
     width: 100px;
     height: 133px;
@@ -342,29 +198,24 @@
     border-radius: 18px;
     overflow: hidden;
   }
-
   .approval-card .photo img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     cursor: pointer;
   }
-
   .approval-card .info {
     flex: 1;
   }
-
   .approval-card .info strong {
     font-size: 17px;
     font-weight: 700;
   }
-
   .approval-card .info .details {
     font-size: 13px;
     color: #bcbcbc;
     margin: 6px 0;
   }
-
   .contacts-btn {
     background: #2c2c2e;
     border: none;
@@ -378,14 +229,12 @@
     align-items: center;
     gap: 6px;
   }
-
   .empty-message {
     text-align: center;
     color: #6c6c70;
     padding: 48px 20px;
     font-size: 16px;
   }
-
   .modal {
     display: none;
     position: fixed;
@@ -400,7 +249,6 @@
     backdrop-filter: blur(16px);
     cursor: pointer;
   }
-
   .modal-content {
     max-width: 90vw;
     max-height: 90vh;
@@ -411,7 +259,6 @@
     position: relative;
     cursor: default;
   }
-
   .modal-img {
     width: auto;
     max-width: 90vw;
@@ -420,7 +267,6 @@
     display: block;
     border-radius: 24px;
   }
-
   .modal-contacts {
     background: #1c1c1e;
     border-radius: 32px;
@@ -430,7 +276,6 @@
     color: white;
     text-align: left;
   }
-
   .close-modal {
     position: absolute;
     top: 16px;
@@ -447,7 +292,6 @@
     justify-content: center;
     border-radius: 40px;
   }
-
   footer {
     text-align: center;
     font-size: 11px;
@@ -496,100 +340,110 @@
 </div>
 
 <script>
-  // ---------- ССЫЛКИ НА СЦЕНЫ ДЛЯ РОЛЕЙ ----------
+  // ---------- ТЕКСТЫ СЦЕН (для ролей, где есть) ----------
   const roleScripts = {
     "Охранник СК 31.05": "https://disk.yandex.ru/i/ph0QzX8C_YOJQA",
-    "Гардеробщик 01.06": "https://disk.yandex.ru/i/2PuS2vjZJCygvg",
     "Полицейский 26.05": "https://disk.yandex.ru/i/bRUpjP-Yt67cZg"
-    // Добавьте другие роли при необходимости: "Врач 12.05": "ссылка", и т.д.
+    // при необходимости можно добавить для других ролей
   };
 
-  // ---------- УТВЕРЖДЕННЫЕ (пока пусто) ----------
-  const approved = [];
+  // ---------- УТВЕРЖДЕННЫЕ ----------
+  const approved = [
+    {
+      name: "Павел Волгин",
+      role: "Врач",
+      img: "photos/Волгин.jpg",
+      size: "183/50/43",
+      video: "https://disk.yandex.ru/i/ljS-1ouGvJ489Q"
+    },
+    {
+      name: "Ева Ждановская",
+      role: "Пожилая женщина",
+      img: "photos/Ждановская.jpg",
+      age: "56",
+      size: "172/46/39",
+      education: "ЭДТ - Ю.Ярветт (Эстония), ВШРиС - В.Зиновьев (СПб)",
+      video: "https://disk.yandex.ru/i/deMl1wwURkc4FA"
+    },
+    {
+      name: "Артем Артемьев",
+      role: "Конвойный",
+      img: "photos/Артем.jpg",
+      size: "180/52/42",
+      note: "готов бриться",
+      video: "https://disk.yandex.ru/i/Txzu8cNZwgT_Pw"
+    },
+    {
+      name: "Владимир Парполов",
+      role: "Парень",
+      img: "photos/Парполов.jpg",
+      size: "175/46/43",
+      education: "абитуриент класса РГИСИ",
+      video: "https://disk.yandex.ru/i/tBIAjd81mvf46Q"
+    },
+    {
+      name: "Михаил Невский",
+      role: "Мастер по ремонту телефонов",
+      img: "photos/Невский.jpg",
+      age: "33",
+      size: "177/50/42",
+      education: "Проф актёр, РГИСИ 2021",
+      video: "https://disk.yandex.ru/d/StXKpQ5yZ00ItQ"
+    },
+    {
+      name: "Петр Лебедев",
+      role: "Оперативник",
+      img: "photos/Лебедев.jpg",
+      age: "32",
+      size: "170/48/40",
+      video: "https://disk.yandex.ru/i/aeHqlZjkSEX8jA"
+    },
+    {
+      name: "Дмитрий Раздымахо",
+      role: "Курьер",
+      img: "photos/Раздымахо.jpg",
+      age: "22",
+      size: "184/52/43",
+      education: "СЗУ, 2025, Факультет музыки, театра и кино",
+      video: "https://casting.filmtoolz.ru/3677389/?modal=actor#video"
+    },
+    {
+      name: "Юрий Носиков",
+      role: "Гардеробщик",
+      img: "photos/Носиков.jpg",
+      size: "175/50/43",
+      video: "https://disk.yandex.ru/i/AMBnu41S-tTkbA"
+    }
+  ];
 
   // ---------- ПРОСМОТРЕННЫЕ (пока пусто) ----------
   const viewed = [];
 
-  // ---------- РОЛИ (все актёры) ----------
+  // ---------- ОСТАВШИЕСЯ РОЛИ (только нужные) ----------
   const data = {
-    "Врач 12.05": [
-      { name: "Павел Нагай", img: "photos/Нагай.jpg", size: "178/50/42", video: "https://disk.yandex.ru/i/jR21wHBoSNXYLA" },
-      { name: "Никита Шеф", img: "photos/Шеф.jpg", img2: "photos/Шеф1.jpg", size: "180/48/42", video: "https://disk.yandex.ru/i/EKKeMwHhobshGA" },
-      { name: "Денис Дудник", img: "photos/Дудник.jpg", size: "178/48/40", video: "https://disk.yandex.ru/d/IqvbuOl85Y_7vw" },
-      { name: "Владислав Пулин", img: "photos/Пулин.jpg", size: "194/52-54/45", video: "https://disk.yandex.ru/i/VU23G64dGMqxsA" },
-      { name: "Павел Волгин", img: "photos/Волгин.jpg", img2: "photos/Волгин1.jpg", size: "183/50/43", video: "https://disk.yandex.ru/i/ljS-1ouGvJ489Q" },
-      { name: "Петр Лебедев", img: "photos/Лебедев.jpg", img2: "photos/Лебедев1.jpg", size: "170/48/40", video: "https://disk.yandex.ru/i/-09uhEqibgumCQ" },
-      { name: "Алексей Далекий", img: "photos/Далекий.jpg", img2: "photos/Далекий1.jpg", size: "180/48/43", video: "https://disk.yandex.ru/i/4CBagZl4QSWg0g" }
-    ],
-    "Конвойный 15.05": [
-      { name: "Олег Меркулов", img: "photos/Меркулов.jpg", img2: "photos/Меркулов1.jpg", age: "35", size: "187/54-56/44-45", video: "https://disk.yandex.ru/i/r2ArgggX61ijpw" },
-      { name: "Виталий Софонов", img: "photos/Софонов.jpg", img2: "photos/Софонов1.jpg", age: "32", size: "183/50-52/43", education: "Киностудия «ЛЕНДОК», Мастерская Македония Киселева", video: "https://disk.yandex.ru/d/aX4WbpLU_hZi5g" },
-      { name: "Максим Шляхтин", img: "photos/Шляхтин.jpg", img2: "photos/Шляхтин1.jpg", age: "28", size: "180/50/44", education: "студент 3 курс актер музыкального театра", video: "https://disk.yandex.ru/i/3OND46Ap6Hyddg" },
-      { name: "Игорь Папылев", img: "photos/Папылев.jpg", age: "47", size: "185/52/45", education: "Закончил СПБГУКИ", video: "https://disk.yandex.ru/i/yFmBHzP0M391MQ" },
-      { name: "Александр Воронин", img: "photos/Воронин.jpg", img2: "photos/Воронин1.jpg", size: "179/52-54/43", video: "https://disk.yandex.ru/i/mOCbf0K_boFKXQ" },
-      { name: "Артем Артемьев", img: "photos/Артем.jpg", size: "180/52/42", note: "готов бриться", video: "https://disk.yandex.ru/i/Txzu8cNZwgT_Pw" }
-    ],
-    "Парень 17.05": [
-      { name: "Владимир Парполов", img: "photos/Парполов.jpg", size: "175/46/43", education: "абитуриент класса РГИСИ", video: "https://disk.yandex.ru/i/tBIAjd81mvf46Q" },
-      { name: "Леонель Прокофьев", img: "photos/Прокофьев.jpg", img2: "photos/Прокофьев1.jpg", age: "15", size: "155/40/36", video: "https://disk.yandex.ru/i/oG3m76Mg4ToeQg" },
-      { name: "Дамир Хамидов", img: "photos/Хамидов.jpg", img2: "photos/Хамидов1.jpg", size: "177/46/42", video: "https://disk.yandex.ru/i/dAjm477zoLZCxw" },
-      { name: "Георгий Ушанов", img: "photos/Ушанов.jpg", img2: "photos/Ушанов1.jpg", size: "178/46/44", video: "https://disk.yandex.ru/i/V0cjtZhF333t9w" },
-      { name: "Никита Демидов", img: "photos/Демидов.jpg", img2: "photos/Демидов1.jpg", age: "17", size: "170/44/40", video: "https://disk.yandex.ru/d/J8kY2bBJfjeS5g" }
-    ],
-    "Мастер по ремонту телефонов 17.05": [
-      { name: "Евгений Фролов", img: "photos/Фролов.jpg", img2: "photos/Фролов1.jpg", age: "48", size: "176/52/41", education: "бииямс (мастер н. а РФ Волков ИН)", video: "https://disk.yandex.ru/i/aPR1m7rOuwlcIQ" },
-      { name: "Данил Коловский", img: "photos/Коловский.jpg", age: "23", size: "170/46-48 (s/м)", education: "Культпросвет училище (ВОККиТ), мастер. Боровикова Е.А.; Высшая школа режиссеров и сценаристов (ВШРиС), мастер. Зиновьев В.А.", video: "https://disk.yandex.ru/i/gEawBr9tKK8pNg" },
-      { name: "Михаил Бахмацкий", img: "photos/Бахмацкий.jpg", age: "37", size: "180/50/41", video: "https://disk.yandex.ru/d/gIlxW8OaAvrpVA" },
-      { name: "Дмитрий Кюсснер", img: "photos/Кюсснер.jpg", age: "21", size: "185/50/44", education: "СЗИУ (маст. Н. А. Евдокимовой)", video: "https://disk.yandex.ru/i/20lYDWFjGwuqdA" },
-      { name: "Михаил Невский", img: "photos/Невский.jpg", img2: "photos/Невский1.jpg", age: "33", size: "177/50/42", education: "Проф актёр, РГИСИ 2021", video: "https://disk.yandex.ru/d/StXKpQ5yZ00ItQ" },
-      { name: "Антон Богданов", img: "photos/Богданов.jpg", age: "37", size: "183/52/43", video: "https://disk.yandex.ru/i/PXrDSlFzCwLO1Q" },
-      { name: "Евгений Ганичев", img: "photos/Ганичев.jpg", age: "51", size: "187/52/45", video: "https://disk.yandex.ru/i/eC159TUKC6-tMg" },
-      { name: "Михаил Локшин", img: "photos/Локшин.jpg", age: "49", size: "185/50/45", education: "ВШРиС, мастерская киноактера, мастер Зиновьев Валерий Анатольевич", video: "https://disk.yandex.ru/i/fIN0CPfjCxAZRQ" }
-    ],
-    "Пожилая женщина 17.05": [
-      { name: "Наталия Яковлева", img: "photos/Яковлева.jpg", size: "162/48/40", video: "https://disk.yandex.ru/i/wl1HqCgawBAJrw" },
-      { name: "Марина Кивик", img: "photos/Кивик.jpg", age: "63", size: "160/48/37", video: "https://disk.yandex.ru/i/-VLVh8TUlug-gA" },
-      { name: "Лилия Тютюн", img: "photos/Тютюн.jpg", size: "160/46/38", video: "https://disk.yandex.ru/i/8SCDl_L5lUWq5g" },
-      { name: "Ева Ждановская", img: "photos/Ждановская.jpg", age: "56", size: "172/46/39", education: "ЭДТ - Ю.Ярветт (Эстония), ВШРиС - В.Зиновьев (СПб)", video: "https://disk.yandex.ru/i/deMl1wwURkc4FA" },
-      { name: "Анна Бирулева", img: "photos/Бирулева.jpg", age: "65", size: "172/50/41", video: "https://disk.yandex.ru/i/N6O2tCD18AoQmw" },
-      { name: "Елена Куприянова", img: "photos/Куприянова.jpg", age: "60+", size: "164/50/40", video: "https://disk.yandex.ru/i/ENSevFp4PmnKXg" },
-      { name: "Валентина Мартышкова", img: "photos/Мартышкова.jpg", img2: "photos/Мартышкова1.jpg", size: "164/44/38", video: "https://disk.yandex.ru/i/ltYwIKKejToLdw" },
-      { name: "Нина Жуковская", img: "photos/Жуковская.jpg", img2: "photos/Жуковская1.jpg", size: "158/48/38", video: "https://disk.yandex.ru/i/E67G5BUSbw-wVA" }
-    ],
-    "Курьер 19.05": [
-      { name: "Дмитрий Раздымахо", img: "photos/Раздымахо.jpg", age: "22", size: "184/52/43", education: "СЗУ, 2025, Факультет музыки, театра и кино", video: "https://casting.filmtoolz.ru/3677389/?modal=actor#video" },
-      { name: "Артём Кочемасов", img: "photos/Кочемасов.jpg", age: "24", size: "182/48/43", education: "СПБГИКИТ, мастерская А.А. Дежонова (2021-2025)", video: "https://disk.yandex.ru/d/NT-4B5MPqOHbyw" },
-      { name: "Андрей Макаров", img: "photos/Макаров.jpg", age: "22", size: "175/46/42", education: "РШИ при СПБРСИ, 2023, Музыки, театра и режиссуры, Мастерская Е.А. Максимовой", video: "https://rutube.ru/video/a243b1ebbd08765af746f96d6d5e7620/?r=wd" },
-      { name: "Дмитрий Иванов", img: "photos/Иванов.jpg", age: "24", size: "190/50/44", education: "Российский институт театрального искусства", video: "https://disk.yandex.ru/d/8yHnrFxppT8fwQ" }
-    ],
-    "Оперативник 27.05": [
-      { name: "Дмитрий Комлев", img: "photos/Комлев.jpg", age: "35", size: "183/52/44", education: "Академия кино и телевидения, мастерская Строева А.М.", video: "https://disk.yandex.ru/i/X1u7NJmZY1grkg" },
-      { name: "Артем Кувшинов", img: "photos/Redibyjd.jpg", age: "29", size: "175/48/42", education: "БИЭПП, 2018, мастерская Д.Г. Юргенс, мастер Агеева Р. О.", video: "https://disk.yandex.ru/i/t21qTp9zfAc7TQ" },
-      { name: "Петр Лебедев", img: "photos/Лебедев.jpg", age: "32", size: "170/48/40", video: "https://disk.yandex.ru/i/aeHqlZjkSEX8jA" }
-    ],
     "Полицейский 26.05": [
       { name: "Денис Алексеев", img: "photos/Алексеев.jpg", age: "38", size: "180/52/45", video: "https://disk.yandex.ru/i/_9_joXs--PTzkA" },
       { name: "Артём Котельников", img: "photos/Котельников.jpg", age: "23", size: "182 XL (пиджак) / 43-44", video: null }
     ],
-    "Гардеробщик 01.06": [
-      { name: "Виктор Ефремов", img: "photos/Ефремов.jpg", size: "175/48/42", video: "https://disk.yandex.ru/i/MU5ADX3H8a1cPQ" },
-      { name: "Юрий Носиков", img: "photos/Носиков.jpg", size: "175/50/43", video: "https://disk.yandex.ru/i/AMBnu41S-tTkbA" },
-      { name: "Валерий Кукуста", img: "photos/Кукуста.jpg", size: "180/52/43", video: "https://disk.yandex.ru/i/M57rpRuZDaXnSA" },
-      { name: "Сергей Кучеров", img: "photos/Кучеров.jpg", age: "52", size: "185/54-56/43", video: "https://disk.yandex.ru/i/wd3tnkaHnjkONg" },
-      { name: "Валерий Вышинский", img: "photos/Вышинский.jpg", age: "56", size: "177/54/42", video: "https://disk.yandex.ru/i/jvyt7ZUVyVCHbQ" }
+    "Охранник СК 31.05": [
+      { name: "Михаил Полозов", img: "photos/Полозов.jpg", video: "https://disk.yandex.ru/i/2OWRPqi4ZHPW8A" },
+      { name: "Александр Алейнов", img: "photos/Алейнов.jpg", size: "175/48/41", video: "https://disk.yandex.ru/i/BnpYFQ9JOQJDGg" },
+      { name: "Дмитрий Морозов", img: "photos/Морозов.jpg", size: "178, размер 50 (М), обувь 43", video: "https://disk.yandex.ru/i/aP-K6xdZW0sv5w" },
+      { name: "Антон Александров", img: "photos/Александров.jpg", size: "188/52-54/43", video: "https://disk.yandex.ru/d/tCGfp9DaSMrhuQ" },
+      { name: "Евгений Ганичев", img: "photos/Ганичев.jpg", size: "187/54/45", video: "https://disk.yandex.ru/i/2lfpmQO0FcZ8qQ" },
+      { name: "Кирилл Сулейманов", img: "photos/сулейманов.jpg", age: "28", size: "182 см, L /43", education: "окончил РГИСИ мастерская А. М. Зеланда в 2019 году", video: "https://disk.yandex.ru/i/ILUx04Spn2_oEQ" }
     ],
     "Парень и девушка 02.06": [],
-    "Малыш 06.06": [],
-    "Охранник СК 31.05": [],
     "Мастер 02.06": [],
+    "Малыш 06.06": [],
     "Внук Серафимы 02.06": [],
     "Врач скорой 05.06": []
   };
 
-  // Роли, которые должны отображаться в компактном формате
-  const compactRoles = ["Курьер 19.05", "Полицейский 26.05", "Гардеробщик 01.06", "Парень и девушка 02.06", "Малыш 06.06", "Охранник СК 31.05"];
+  // Все оставшиеся роли отображаем в компактном формате
+  const compactRoles = Object.keys(data);
 
-  // ---------- ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ ----------
+  // ---------- ОБЩИЕ ФУНКЦИИ ----------
   function escapeHtml(str) {
     if (!str) return '';
     return str.replace(/[&<>]/g, function(m) {
@@ -598,34 +452,6 @@
       if (m === '>') return '&gt;';
       return m;
     });
-  }
-
-  function buildMetaBlock(actor) {
-    let metaHtml = '';
-    if (actor.age) metaHtml += `<span>📅 ${actor.age}</span>`;
-    if (actor.size) metaHtml += `<span>📏 ${actor.size}</span>`;
-    if (actor.education) metaHtml += `<span>🎓 ${actor.education}</span>`;
-    if (actor.note) metaHtml += `<span>📌 ${actor.note}</span>`;
-    return metaHtml ? `<div class="meta">${metaHtml}</div>` : '';
-  }
-
-  function renderPhotoBlock(actor) {
-    if (actor.img2) {
-      return `
-        <div class="photo-block">
-          <div class="carousel-slider">
-            <div class="slide"><img src="${actor.img}" alt="фото 1" loading="lazy" onclick="openFullImage('${actor.img}')"></div>
-            <div class="slide"><img src="${actor.img2}" alt="фото 2" loading="lazy" onclick="openFullImage('${actor.img2}')"></div>
-          </div>
-        </div>
-      `;
-    } else {
-      return `
-        <div class="photo-block single-photo">
-          <img src="${actor.img}" alt="${actor.name}" loading="lazy" onclick="openFullImage('${actor.img}')">
-        </div>
-      `;
-    }
   }
 
   function openFullImage(src) {
@@ -667,9 +493,7 @@
 
   function openScript(role) {
     const url = roleScripts[role];
-    if (url) {
-      window.open(url, '_blank');
-    }
+    if (url) window.open(url, '_blank');
   }
 
   function openRole(role) {
@@ -679,7 +503,6 @@
     const container = document.getElementById('actorContainer');
     container.innerHTML = '';
 
-    // Добавляем кнопку текста сцены, если есть
     if (roleScripts[role]) {
       const scriptBtn = document.createElement('button');
       scriptBtn.className = 'script-button';
@@ -693,50 +516,29 @@
       return;
     }
 
-    const isCompact = compactRoles.includes(role);
-    const wrapperClass = isCompact ? 'compact-container' : 'actor-container';
+    // Все оставшиеся роли — компактный формат
     const actorsWrapper = document.createElement('div');
-    actorsWrapper.className = wrapperClass;
+    actorsWrapper.className = 'compact-container';
     container.appendChild(actorsWrapper);
 
     actorsList.forEach(actor => {
-      if (isCompact) {
-        let detailsHtml = '';
-        if (actor.age) detailsHtml += `<span>📅 ${actor.age}</span>`;
-        if (actor.education) detailsHtml += `<span>🎓 ${actor.education}</span>`;
-        if (actor.size && !actor.education && !actor.age) detailsHtml += `<span>📏 ${actor.size}</span>`;
-        else if (actor.size) detailsHtml += `<span>📏 ${actor.size}</span>`;
-        const cardHtml = `
-          <div class="compact-card">
-            <div class="photo">
-              <img src="${actor.img}" alt="${actor.name}" loading="lazy" onclick="openFullImage('${actor.img}')">
-            </div>
-            <div class="info">
-              <strong>${escapeHtml(actor.name)}</strong>
-              <div class="details">${detailsHtml}</div>
-              ${actor.video ? `<button class="video-link-btn" onclick="window.open('${actor.video}', '_blank')">▶ Смотреть визитку</button>` : ''}
-            </div>
+      let detailsHtml = '';
+      if (actor.age) detailsHtml += `<span>📅 ${actor.age}</span>`;
+      if (actor.education) detailsHtml += `<span>🎓 ${actor.education}</span>`;
+      if (actor.size && !actor.education && !actor.age) detailsHtml += `<span>📏 ${actor.size}</span>`;
+      else if (actor.size) detailsHtml += `<span>📏 ${actor.size}</span>`;
+      actorsWrapper.innerHTML += `
+        <div class="compact-card">
+          <div class="photo">
+            <img src="${actor.img}" alt="${actor.name}" loading="lazy" onclick="openFullImage('${actor.img}')">
           </div>
-        `;
-        actorsWrapper.innerHTML += cardHtml;
-      } else {
-        const photoHtml = renderPhotoBlock(actor);
-        const metaHtml = buildMetaBlock(actor);
-        const videoBtn = actor.video 
-          ? `<button class="video-btn" onclick="window.open('${actor.video}', '_blank')">▶ Смотреть видео</button>` 
-          : '';
-        const cardHtml = `
-          <div class="actor-card">
-            ${photoHtml}
-            <div class="actor-info">
-              <div class="name">${escapeHtml(actor.name)}</div>
-              ${metaHtml}
-              ${videoBtn}
-            </div>
+          <div class="info">
+            <strong>${escapeHtml(actor.name)}</strong>
+            <div class="details">${detailsHtml}</div>
+            ${actor.video ? `<button class="video-link-btn" onclick="window.open('${actor.video}', '_blank')">▶ Смотреть визитку</button>` : ''}
           </div>
-        `;
-        actorsWrapper.innerHTML += cardHtml;
-      }
+        </div>
+      `;
     });
   }
 
@@ -747,7 +549,6 @@
     document.getElementById('home').style.display = 'block';
   }
 
-  // Функции для утверждённых и просмотренных (оставлены без изменений)
   function openApproved() {
     document.getElementById('home').style.display = 'none';
     document.getElementById('approvedPage').style.display = 'block';
@@ -758,14 +559,14 @@
       return;
     }
     approved.forEach(actor => {
-      const contactsBtn = actor.contacts ? `<button class="contacts-btn" onclick="window.showContactsForActor(${JSON.stringify(actor).replace(/"/g, '&quot;')})">📋 Контакты</button>` : '';
+      const detailsHtml = `${actor.age ? `📅 ${actor.age} ` : ''}${actor.size ? `📏 ${actor.size} ` : ''}${actor.education ? `🎓 ${actor.education} ` : ''}${actor.note ? `📌 ${actor.note} ` : ''}`;
       container.innerHTML += `
         <div class="approval-card">
           <div class="photo"><img src="${actor.img}" alt="${actor.name}" onclick="openFullImage('${actor.img}')"></div>
           <div class="info">
             <strong>${escapeHtml(actor.name)}</strong>
-            <div class="details">${actor.age ? `📅 ${actor.age}` : ''} ${actor.education ? `🎓 ${actor.education}` : ''}</div>
-            ${contactsBtn}
+            <div class="details">${escapeHtml(actor.role)}<br>${detailsHtml}</div>
+            <button class="contacts-btn" onclick="window.showContactsForActor(${JSON.stringify(actor).replace(/"/g, '&quot;')})">📋 Контакты</button>
           </div>
         </div>
       `;
