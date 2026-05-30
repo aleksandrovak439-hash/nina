@@ -95,26 +95,6 @@
     content: "🎬";
     font-size: 14px;
   }
-  .script-button {
-    background: #2c2c2e;
-    border: none;
-    border-radius: 40px;
-    padding: 10px 20px;
-    font-size: 14px;
-    font-weight: 600;
-    color: white;
-    cursor: pointer;
-    transition: 0.2s;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    margin: 8px 16px 0 16px;
-    width: fit-content;
-  }
-  .script-button:active {
-    transform: scale(0.96);
-    background: #3a3a3c;
-  }
   .compact-container {
     padding: 16px;
     display: flex;
@@ -340,14 +320,7 @@
 </div>
 
 <script>
-  // ---------- ТЕКСТЫ СЦЕН (для ролей, где есть) ----------
-  const roleScripts = {
-    "Охранник СК 31.05": "https://disk.yandex.ru/i/ph0QzX8C_YOJQA",
-    "Полицейский 26.05": "https://disk.yandex.ru/i/bRUpjP-Yt67cZg"
-    // при необходимости можно добавить для других ролей
-  };
-
-  // ---------- УТВЕРЖДЕННЫЕ ----------
+  // ---------- УТВЕРЖДЕННЫЕ (из прошлого, плюс Алейнов) ----------
   const approved = [
     {
       name: "Павел Волгин",
@@ -413,32 +386,50 @@
       img: "photos/Носиков.jpg",
       size: "175/50/43",
       video: "https://disk.yandex.ru/i/AMBnu41S-tTkbA"
-    }, 
-   { 
+    },
+    {
       name: "Александр Алейнов",
       role: "Охранник СК",
       img: "photos/Алейнов.jpg",
       size: "175/48/41",
       video: "https://disk.yandex.ru/i/BnpYFQ9JOQJDGg"
-   }
+    }
   ];
 
   // ---------- ПРОСМОТРЕННЫЕ (пока пусто) ----------
   const viewed = [];
 
-  // ---------- ОСТАВШИЕСЯ РОЛИ (только нужные) ----------
+  // ---------- РОЛИ С АКТЁРАМИ (добавлены новые) ----------
   const data = {
     "Парень и девушка 02.06": [],
-    "Мастер 02.06": [],
+    "Мастер 02.06": [
+      { name: "Сабина Зарбалиева", img: "photos/Зарбалиева.jpg", size: "172/44/38", video: "https://disk.yandex.ru/d/mWxS2FzSd8yh6g" },
+      { name: "Нина Нимкаева", img: "photos/Нимкаева.jpg", video: "https://disk.yandex.ru/i/Hb6jyM5nBwWebg" },
+      { name: "Татьяна Косихина", img: "photos/Косихина.jpg", age: "35", size: "173/42/37", education: "НГТИ (курс «Артист драматического театра и кино», рук. С.В. Вишнякова)", video: "https://disk.yandex.ru/i/m60TcDIHFxlAJg" },
+      { name: "Екатерина Королева", img: "photos/Королева.jpg", video: "https://disk.yandex.ru/i/aS-5DyymYJGk9Q" },
+      { name: "Юлия Кизилова", img: "photos/Кизилова.jpg", age: "24", size: "168/42/37", video: "https://disk.yandex.ru/i/JvSQ_7_vUIGtzg" },
+      { name: "Виктория Никулина", img: "photos/Никулина.jpg", video: "https://disk.yandex.ru/d/7XifoCcXtDAV1g" }
+    ],
     "Малыш 06.06": [],
-    "Внук Серафимы 02.06": [],
-    "Врач скорой 05.06": []
+    "Внук Серафимы 02.06": [
+      { name: "Руслан Бердюгин", img: "photos/Руслан.jpg", video: "https://disk.yandex.ru/a/NZGUjpypUjqfGA" },
+      { name: "Артем Зиновьев", img: "photos/Зиновьев.jpg", age: "21", size: "189/М/44", education: "РГИСИ (С.Д.Бызгу)", video: "https://disk.yandex.ru/i/J_Jn-IWnKXZQ8Q" },
+      { name: "Артем Адамчук", img: "photos/Адамчук.jpg", age: "23", size: "175/48/42", video: "https://disk.yandex.ru/d/n-pO5ZbBx5bfzg" },
+      { name: "Андрей Макаров", img: "photos/Макаров.jpg", age: "22", size: "175/46/42", education: "РШИ при СПБРСИ, 2023, Музыки, театра и режиссуры, Мастерская Е.А. Максимовой", video: "https://disk.yandex.ru/i/0EvaoqTfkFFgJg" }
+    ],
+    "Врач скорой 05.06": [
+      { name: "Максим Шляхтин", img: "photos/Шляхтин.jpg", img2: "photos/Шляхтин1.jpg", video: "https://disk.yandex.ru/i/cWoBYz2eSrnqkA" },
+      { name: "Тимур Абдрахманов", img: "photos/Абдрахманов.jpg", video: "https://disk.yandex.ru/d/GCheYrP7KEzmCA" },
+      { name: "Павел Нагай", img: "photos/Нагай.jpg", age: "40", size: "178/50/42", video: "https://disk.yandex.ru/i/ig8hFqy6Pra5tQ" },
+      { name: "Константин Сидоров", img: "photos/Сидоров.jpg", age: "38", size: "185/48-50/43", video: "https://disk.yandex.ru/d/xkSQOaZVP8RV9g" },
+      { name: "Андрей Коновалов", img: "photos/Коновалов.jpg", age: "33", size: "183/50/45", video: "https://disk.yandex.ru/i/7QvHCsgn6m2fwg" }
+    ]
   };
 
-  // Все оставшиеся роли отображаем в компактном формате
+  // Все роли в компактном формате
   const compactRoles = Object.keys(data);
 
-  // ---------- ОБЩИЕ ФУНКЦИИ ----------
+  // ---------- ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ ----------
   function escapeHtml(str) {
     if (!str) return '';
     return str.replace(/[&<>]/g, function(m) {
@@ -486,11 +477,6 @@
     document.getElementById('contactsModal').style.display = 'none';
   }
 
-  function openScript(role) {
-    const url = roleScripts[role];
-    if (url) window.open(url, '_blank');
-  }
-
   function openRole(role) {
     const actorsList = data[role];
     document.getElementById('home').style.display = 'none';
@@ -498,25 +484,18 @@
     const container = document.getElementById('actorContainer');
     container.innerHTML = '';
 
-    if (roleScripts[role]) {
-      const scriptBtn = document.createElement('button');
-      scriptBtn.className = 'script-button';
-      scriptBtn.innerHTML = '📄 Текст сцены';
-      scriptBtn.onclick = () => openScript(role);
-      container.appendChild(scriptBtn);
-    }
-
     if (!actorsList || actorsList.length === 0) {
       container.innerHTML += '<div class="empty-message">✨ Пока нет проб на эту роль</div>';
       return;
     }
 
-    // Все оставшиеся роли — компактный формат
     const actorsWrapper = document.createElement('div');
     actorsWrapper.className = 'compact-container';
     container.appendChild(actorsWrapper);
 
     actorsList.forEach(actor => {
+      // Для актёров с двумя фото показываем только первое (в компактном формате слайдер не нужен)
+      const imgSrc = actor.img2 ? actor.img : actor.img;
       let detailsHtml = '';
       if (actor.age) detailsHtml += `<span>📅 ${actor.age}</span>`;
       if (actor.education) detailsHtml += `<span>🎓 ${actor.education}</span>`;
@@ -525,7 +504,7 @@
       actorsWrapper.innerHTML += `
         <div class="compact-card">
           <div class="photo">
-            <img src="${actor.img}" alt="${actor.name}" loading="lazy" onclick="openFullImage('${actor.img}')">
+            <img src="${imgSrc}" alt="${actor.name}" loading="lazy" onclick="openFullImage('${imgSrc}')">
           </div>
           <div class="info">
             <strong>${escapeHtml(actor.name)}</strong>
