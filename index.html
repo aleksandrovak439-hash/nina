@@ -3,20 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Нина — кастинг</title>
+<title>Нина — финал кастинга</title>
 <style>
   * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    -webkit-tap-highlight-color: transparent;
   }
+
   body {
     background: #050505;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, sans-serif;
     color: #f2f2f2;
-    padding: 0 0 24px 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
   }
+
   .app-header {
     padding: 20px 16px 8px 16px;
     border-bottom: 1px solid rgba(255,255,255,0.05);
@@ -27,6 +30,7 @@
     top: 0;
     z-index: 10;
   }
+
   .app-header h1 {
     font-size: 26px;
     font-weight: 700;
@@ -38,130 +42,49 @@
     margin: 0;
     text-align: left;
   }
-  .back-button {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: rgba(255,255,255,0.08);
-    backdrop-filter: blur(8px);
-    padding: 8px 16px;
-    border-radius: 40px;
-    font-size: 15px;
-    font-weight: 500;
-    color: #fff;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    border: 0.5px solid rgba(255,255,255,0.1);
-    width: fit-content;
-    margin: 12px 16px 0 16px;
+
+  .thankyou-block {
+    text-align: center;
+    padding: 48px 24px;
+    margin: 20px 16px;
+    background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%);
+    border-radius: 48px;
+    border: 1px solid rgba(255,255,255,0.1);
+    backdrop-filter: blur(4px);
   }
-  .back-button:active {
-    transform: scale(0.97);
-  }
-  .role-list {
-    padding: 8px 16px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-  .role-card {
-    background: #121212;
-    border-radius: 24px;
-    padding: 18px 20px;
-    transition: all 0.2s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-    cursor: pointer;
-    border: 1px solid rgba(255,255,255,0.05);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-  }
-  .role-card:active {
-    transform: scale(0.98);
-    background: #1c1c1e;
-  }
-  .role-card strong {
-    font-size: 18px;
-    font-weight: 600;
-    letter-spacing: -0.3px;
-    display: block;
-    margin-bottom: 8px;
-  }
-  .role-count {
-    font-size: 13px;
-    color: #9e9e9e;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-  .role-count::before {
-    content: "🎬";
-    font-size: 14px;
-  }
-  .compact-container {
-    padding: 16px;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-  }
-  .compact-card {
-    background: #121212;
-    border-radius: 24px;
-    padding: 12px;
-    display: flex;
-    gap: 16px;
-    align-items: center;
-    border: 1px solid rgba(255,255,255,0.05);
-  }
-  .compact-card .photo {
-    width: 100px;
-    height: 133px;
-    flex-shrink: 0;
-    border-radius: 18px;
-    overflow: hidden;
-    background: #2c2c2e;
-  }
-  .compact-card .photo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    cursor: pointer;
-  }
-  .compact-card .info {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-  .compact-card .info strong {
-    font-size: 17px;
+
+  .thankyou-block h2 {
+    font-size: 28px;
     font-weight: 700;
+    margin-bottom: 16px;
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
   }
-  .compact-card .info .details {
-    font-size: 13px;
-    color: #bcbcbc;
+
+  .thankyou-block p {
+    font-size: 18px;
+    color: #ccc;
+    line-height: 1.5;
   }
-  .compact-card .info .details span {
+
+  .thankyou-icon {
+    font-size: 64px;
+    margin-bottom: 24px;
     display: inline-block;
-    margin-right: 12px;
   }
-  .video-link-btn {
-    background: #ff3b30;
-    border: none;
-    border-radius: 40px;
-    padding: 8px 16px;
-    font-size: 13px;
-    font-weight: 600;
-    color: white;
-    width: fit-content;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-  }
-  .approved-container, .viewed-container {
+
+  .approved-container {
     padding: 16px;
     display: flex;
     flex-direction: column;
     gap: 14px;
+    max-width: 600px;
+    margin: 0 auto;
+    width: 100%;
   }
+
   .approval-card {
     background: #121212;
     border-radius: 24px;
@@ -170,32 +93,47 @@
     gap: 16px;
     align-items: center;
     border: 1px solid rgba(255,255,255,0.05);
+    transition: all 0.2s;
   }
+
   .approval-card .photo {
     width: 100px;
     height: 133px;
     flex-shrink: 0;
     border-radius: 18px;
     overflow: hidden;
+    background: #2c2c2e;
   }
+
   .approval-card .photo img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     cursor: pointer;
+    transition: transform 0.2s;
   }
+
+  .approval-card .photo img:active {
+    transform: scale(0.98);
+  }
+
   .approval-card .info {
     flex: 1;
   }
+
   .approval-card .info strong {
     font-size: 17px;
     font-weight: 700;
+    display: block;
+    margin-bottom: 4px;
   }
+
   .approval-card .info .details {
     font-size: 13px;
     color: #bcbcbc;
     margin: 6px 0;
   }
+
   .contacts-btn {
     background: #2c2c2e;
     border: none;
@@ -208,13 +146,21 @@
     display: inline-flex;
     align-items: center;
     gap: 6px;
+    transition: 0.2s;
   }
+
+  .contacts-btn:active {
+    transform: scale(0.96);
+    background: #3a3a3c;
+  }
+
   .empty-message {
     text-align: center;
     color: #6c6c70;
     padding: 48px 20px;
     font-size: 16px;
   }
+
   .modal {
     display: none;
     position: fixed;
@@ -229,6 +175,7 @@
     backdrop-filter: blur(16px);
     cursor: pointer;
   }
+
   .modal-content {
     max-width: 90vw;
     max-height: 90vh;
@@ -239,6 +186,7 @@
     position: relative;
     cursor: default;
   }
+
   .modal-img {
     width: auto;
     max-width: 90vw;
@@ -247,6 +195,7 @@
     display: block;
     border-radius: 24px;
   }
+
   .modal-contacts {
     background: #1c1c1e;
     border-radius: 32px;
@@ -256,6 +205,7 @@
     color: white;
     text-align: left;
   }
+
   .close-modal {
     position: absolute;
     top: 16px;
@@ -271,12 +221,19 @@
     align-items: center;
     justify-content: center;
     border-radius: 40px;
+    transition: 0.2s;
   }
+
+  .close-modal:hover {
+    background: #ff3b30;
+  }
+
   footer {
     text-align: center;
     font-size: 11px;
     color: #3a3a3c;
-    margin-top: 32px;
+    margin-top: auto;
+    padding: 24px 16px;
   }
 </style>
 </head>
@@ -284,25 +241,18 @@
 
 <div id="home">
   <div class="app-header">
-    <h1>🎬 Нина<br><span style="font-size: 14px; font-weight: normal; color:#aaa;">кастинг</span></h1>
+    <h1>🎬 Нина<br><span style="font-size: 14px; font-weight: normal; color:#aaa;">кастинг завершён</span></h1>
   </div>
-  <div class="role-list" id="roleList"></div>
-  <footer>Актёрский состав • презентация</footer>
-</div>
 
-<div id="actorPage" style="display:none;">
-  <div class="back-button" onclick="goBack()">← Назад к ролям</div>
-  <div id="actorContainer"></div>
-</div>
-
-<div id="approvedPage" style="display:none;">
-  <div class="back-button" onclick="goBack()">← Назад</div>
   <div class="approved-container" id="approvedContainer"></div>
-</div>
 
-<div id="viewedPage" style="display:none;">
-  <div class="back-button" onclick="goBack()">← Назад</div>
-  <div class="viewed-container" id="viewedContainer"></div>
+  <div class="thankyou-block">
+    <div class="thankyou-icon">🎭✨</div>
+    <h2>Благодарим за совместную работу!</h2>
+    <p>Все персонажи на проект утверждены.<br>Кастинг завершён.</p>
+  </div>
+
+  <footer>Проект «Нина» • финальный состав</footer>
 </div>
 
 <div id="photoModal" class="modal" onclick="closePhotoModal(event)">
@@ -320,7 +270,7 @@
 </div>
 
 <script>
-  // ---------- УТВЕРЖДЕННЫЕ (из прошлого, плюс Алейнов) ----------
+  // ---------- ВСЕ УТВЕРЖДЁННЫЕ (ранее + новые) ----------
   const approved = [
     {
       name: "Павел Волгин",
@@ -393,41 +343,26 @@
       img: "photos/Алейнов.jpg",
       size: "175/48/41",
       video: "https://disk.yandex.ru/i/BnpYFQ9JOQJDGg"
+    },
+    {
+      name: "Руслан Бердюгин",
+      role: "Внук Серафимы (Виталик)",
+      img: "photos/Руслан.jpg",
+      video: "https://disk.yandex.ru/a/NZGUjpypUjqfGA"
+    },
+    {
+      name: "Максим Шляхтин",
+      role: "Врач скорой",
+      img: "photos/Шляхтин.jpg",
+      video: "https://disk.yandex.ru/i/cWoBYz2eSrnqkA"
+    },
+    {
+      name: "Екатерина Королева",
+      role: "Мастер",
+      img: "photos/Королева.jpg",
+      video: "https://disk.yandex.ru/i/aS-5DyymYJGk9Q"
     }
   ];
-
-  // ---------- ПРОСМОТРЕННЫЕ (пока пусто) ----------
-  const viewed = [];
-
-  // ---------- РОЛИ С АКТЁРАМИ (добавлены новые) ----------
-  const data = {
-    "Парень и девушка 02.06": [],
-    "Мастер 02.06": [
-      { name: "Сабина Зарбалиева", img: "photos/Зарбалиева.jpg", size: "172/44/38", video: "https://disk.yandex.ru/d/mWxS2FzSd8yh6g" },
-      { name: "Нина Нимкаева", img: "photos/Нимкаева.jpg", video: "https://disk.yandex.ru/i/Hb6jyM5nBwWebg" },
-      { name: "Татьяна Косихина", img: "photos/Косихина.jpg", age: "35", size: "173/42/37", education: "НГТИ (курс «Артист драматического театра и кино», рук. С.В. Вишнякова)", video: "https://disk.yandex.ru/i/m60TcDIHFxlAJg" },
-      { name: "Екатерина Королева", img: "photos/Королева.jpg", video: "https://disk.yandex.ru/i/aS-5DyymYJGk9Q" },
-      { name: "Юлия Кизилова", img: "photos/Кизилова.jpg", age: "24", size: "168/42/37", video: "https://disk.yandex.ru/i/JvSQ_7_vUIGtzg" },
-      { name: "Виктория Никулина", img: "photos/Никулина.jpg", video: "https://disk.yandex.ru/d/7XifoCcXtDAV1g" }
-    ],
-    "Малыш 06.06": [],
-    "Внук Серафимы 02.06": [
-      { name: "Руслан Бердюгин", img: "photos/Руслан.jpg", video: "https://disk.yandex.ru/a/NZGUjpypUjqfGA" },
-      { name: "Артем Зиновьев", img: "photos/Зиновьев.jpg", age: "21", size: "189/М/44", education: "РГИСИ (С.Д.Бызгу)", video: "https://disk.yandex.ru/i/J_Jn-IWnKXZQ8Q" },
-      { name: "Артем Адамчук", img: "photos/Адамчук.jpg", age: "23", size: "175/48/42", video: "https://disk.yandex.ru/d/n-pO5ZbBx5bfzg" },
-      { name: "Андрей Макаров", img: "photos/Макаров.jpg", age: "22", size: "175/46/42", education: "РШИ при СПБРСИ, 2023, Музыки, театра и режиссуры, Мастерская Е.А. Максимовой", video: "https://disk.yandex.ru/i/0EvaoqTfkFFgJg" }
-    ],
-    "Врач скорой 05.06": [
-      { name: "Максим Шляхтин", img: "photos/Шляхтин.jpg", img2: "photos/Шляхтин1.jpg", video: "https://disk.yandex.ru/i/cWoBYz2eSrnqkA" },
-      { name: "Тимур Абдрахманов", img: "photos/Абдрахманов.jpg", video: "https://disk.yandex.ru/d/GCheYrP7KEzmCA" },
-      { name: "Павел Нагай", img: "photos/Нагай.jpg", age: "40", size: "178/50/42", video: "https://disk.yandex.ru/i/ig8hFqy6Pra5tQ" },
-      { name: "Константин Сидоров", img: "photos/Сидоров.jpg", age: "38", size: "185/48-50/43", video: "https://disk.yandex.ru/d/xkSQOaZVP8RV9g" },
-      { name: "Андрей Коновалов", img: "photos/Коновалов.jpg", age: "33", size: "183/50/45", video: "https://disk.yandex.ru/i/7QvHCsgn6m2fwg" }
-    ]
-  };
-
-  // Все роли в компактном формате
-  const compactRoles = Object.keys(data);
 
   // ---------- ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ ----------
   function escapeHtml(str) {
@@ -477,55 +412,7 @@
     document.getElementById('contactsModal').style.display = 'none';
   }
 
-  function openRole(role) {
-    const actorsList = data[role];
-    document.getElementById('home').style.display = 'none';
-    document.getElementById('actorPage').style.display = 'block';
-    const container = document.getElementById('actorContainer');
-    container.innerHTML = '';
-
-    if (!actorsList || actorsList.length === 0) {
-      container.innerHTML += '<div class="empty-message">✨ Пока нет проб на эту роль</div>';
-      return;
-    }
-
-    const actorsWrapper = document.createElement('div');
-    actorsWrapper.className = 'compact-container';
-    container.appendChild(actorsWrapper);
-
-    actorsList.forEach(actor => {
-      // Для актёров с двумя фото показываем только первое (в компактном формате слайдер не нужен)
-      const imgSrc = actor.img2 ? actor.img : actor.img;
-      let detailsHtml = '';
-      if (actor.age) detailsHtml += `<span>📅 ${actor.age}</span>`;
-      if (actor.education) detailsHtml += `<span>🎓 ${actor.education}</span>`;
-      if (actor.size && !actor.education && !actor.age) detailsHtml += `<span>📏 ${actor.size}</span>`;
-      else if (actor.size) detailsHtml += `<span>📏 ${actor.size}</span>`;
-      actorsWrapper.innerHTML += `
-        <div class="compact-card">
-          <div class="photo">
-            <img src="${imgSrc}" alt="${actor.name}" loading="lazy" onclick="openFullImage('${imgSrc}')">
-          </div>
-          <div class="info">
-            <strong>${escapeHtml(actor.name)}</strong>
-            <div class="details">${detailsHtml}</div>
-            ${actor.video ? `<button class="video-link-btn" onclick="window.open('${actor.video}', '_blank')">▶ Смотреть визитку</button>` : ''}
-          </div>
-        </div>
-      `;
-    });
-  }
-
-  function goBack() {
-    document.getElementById('actorPage').style.display = 'none';
-    document.getElementById('approvedPage').style.display = 'none';
-    document.getElementById('viewedPage').style.display = 'none';
-    document.getElementById('home').style.display = 'block';
-  }
-
-  function openApproved() {
-    document.getElementById('home').style.display = 'none';
-    document.getElementById('approvedPage').style.display = 'block';
+  function renderApproved() {
     const container = document.getElementById('approvedContainer');
     container.innerHTML = '';
     if (!approved.length) {
@@ -536,7 +423,9 @@
       const detailsHtml = `${actor.age ? `📅 ${actor.age} ` : ''}${actor.size ? `📏 ${actor.size} ` : ''}${actor.education ? `🎓 ${actor.education} ` : ''}${actor.note ? `📌 ${actor.note} ` : ''}`;
       container.innerHTML += `
         <div class="approval-card">
-          <div class="photo"><img src="${actor.img}" alt="${actor.name}" onclick="openFullImage('${actor.img}')"></div>
+          <div class="photo">
+            <img src="${actor.img}" alt="${actor.name}" onclick="openFullImage('${actor.img}')">
+          </div>
           <div class="info">
             <strong>${escapeHtml(actor.name)}</strong>
             <div class="details">${escapeHtml(actor.role)}<br>${detailsHtml}</div>
@@ -545,65 +434,16 @@
         </div>
       `;
     });
-    window.showContactsForActor = function(actorObj) { showContacts(actorObj); };
   }
 
-  function openViewed() {
-    document.getElementById('home').style.display = 'none';
-    document.getElementById('viewedPage').style.display = 'block';
-    const container = document.getElementById('viewedContainer');
-    container.innerHTML = '';
-    if (!viewed.length) {
-      container.innerHTML = '<div class="empty-message">Нет просмотренных актёров</div>';
-      return;
-    }
-    viewed.forEach(actor => {
-      container.innerHTML += `
-        <div class="approval-card">
-          <div class="photo"><img src="${actor.img}" alt="${actor.name}" onclick="openFullImage('${actor.img}')"></div>
-          <div class="info">
-            <strong>${escapeHtml(actor.name)}</strong>
-            <div class="details">${actor.age ? `📅 ${actor.age}` : ''} ${actor.education ? `🎓 ${actor.education}` : ''}</div>
-            ${actor.video ? `<button class="video-link-btn" onclick="window.open('${actor.video}', '_blank')">▶ Смотреть визитку</button>` : ''}
-          </div>
-        </div>
-      `;
-    });
-  }
-
-  // Построение главного меню
-  const roleListDiv = document.getElementById('roleList');
-  roleListDiv.innerHTML = '';
-
-  const specials = [
-    { name: '✅ УТВЕРЖДЕННЫЕ', handler: openApproved, emoji: '⭐' },
-    { name: '👁 ПРОСМОТРЕННЫЕ', handler: openViewed, emoji: '👀' }
-  ];
-  specials.forEach(spec => {
-    const card = document.createElement('div');
-    card.className = 'role-card';
-    card.innerHTML = `<strong>${spec.name}</strong><div class="role-count">${spec.emoji} финальный список</div>`;
-    card.onclick = spec.handler;
-    roleListDiv.appendChild(card);
-  });
-
-  for (let role in data) {
-    const count = data[role].length;
-    const card = document.createElement('div');
-    card.className = 'role-card';
-    card.innerHTML = `<strong>${escapeHtml(role)}</strong><div class="role-count">${count} ${count === 1 ? 'проба' : 'проб'}</div>`;
-    card.onclick = (function(r) { return function() { openRole(r); }; })(role);
-    roleListDiv.appendChild(card);
-  }
-
-  window.goBack = goBack;
-  window.openApproved = openApproved;
-  window.openViewed = openViewed;
-  window.openRole = openRole;
+  window.showContactsForActor = function(actorObj) {
+    showContacts(actorObj);
+  };
   window.openFullImage = openFullImage;
   window.closePhotoModal = closePhotoModal;
   window.closeContactsModal = closeContactsModal;
-  window.showContacts = showContacts;
+
+  renderApproved();
 </script>
 
 </body>
